@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Dev blog</title>
-  <meta name="description" content="Developper blog about Java, Linux, shell, optimisations and more.
-">
+  <title>Blog creation with Jekyll part 1</title>
+  <meta name="description" content="Used commands to install Ruby, Rubygem, rvm and Jekyll:">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://sylvain-bugat.github.io/">
+  <link rel="canonical" href="http://sylvain-bugat.github.io/blog/jekyll/2015/01/25/blog-creation-with-Jekyll-part-1.html">
   <link rel="alternate" type="application/rss+xml" title="Dev blog" href="http://sylvain-bugat.github.io/feed.xml" />
 </head>
 
@@ -55,23 +54,57 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title">Blog creation with Jekyll part 1</h1>
+    <p class="post-meta">Jan 25, 2015</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Jan 25, 2015</span>
+  <article class="post-content">
+    <p>Used commands to install Ruby, Rubygem, rvm and Jekyll:</p>
 
-        <h2>
-          <a class="post-link" href="/blog/jekyll/2015/01/25/blog-creation-with-Jekyll-part-1.html">Blog creation with Jekyll part 1</a>
-        </h2>
-      </li>
-    
-  </ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">yum install ruby
+yum install gem</code></pre></div>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>Now that Jekyll is installed and functionnal on a no-root user, you can create a blog skeleton with this command:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">jekyll new myBlog</code></pre></div>
+
+<p>A new directory <strong>myBlog</strong> is created by Jekyll with basic template blog files:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">_layouts/default.html
+_layouts/post.html
+_layouts/page.html
+_sass/_base.scss
+_sass/_syntax-highlighting.scss
+_sass/_layout.scss
+_includes/head.html
+_includes/header.html
+_includes/footer.html
+_site/about/index.html
+_site/index.html
+_site/css/main.css
+_site/jekyll/2015/01/25/welcome-to-jekyll.html
+_site/feed.xml
+about.md
+index.html
+css/main.scss
+.sass-cache/a67f5432f49acc7482f14cdff3f0b7cfc41f9d95/_syntax-highlighting.scssc
+.sass-cache/a67f5432f49acc7482f14cdff3f0b7cfc41f9d95/_layout.scssc
+.sass-cache/a67f5432f49acc7482f14cdff3f0b7cfc41f9d95/_base.scssc
+_config.yml
+_posts/2015-01-25-welcome-to-jekyll.markdown
+feed.xml</code></pre></div>
+
+<p><strong>Documentations:</strong></p>
+
+<p><a href="http://jekyllrb.com">Jekyll docs</a><br />
+<a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a><br />
+<a href="https://github.com/jekyll/jekyll-help">Jekyll’s dedicated Help repository</a>  </p>
+
+
+  </article>
 
 </div>
 

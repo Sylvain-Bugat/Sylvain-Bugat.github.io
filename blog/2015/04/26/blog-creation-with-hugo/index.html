@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Blog creation with Hugo &middot; Sylvain Bugat</title>
+
+  
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole-overrides.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde-x.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Create a blog from scratch with Hugo">
+  <meta name="keywords" content="blog creation,blog,hugo">
+  
+</head>
+<body class="theme-base-0d layout-reverse">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>Sylvain Bugat</h1>
+      <p class="lead"><p>We require more batchs!</p>
+</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://sylvain-bugat.github.io//">Blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="/about/">About Me</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/Sylvain-Bugat"><i class="fa fa-github-square fa-3x"></i></a>
+      <a href="https://www.linkedin.com/in/sylvainbugat"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      
+      
+      
+      </li>
+    </ul>
+
+    <p>Copyright &copy; 2015 <a href="http://sylvain-bugat.github.io//license">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>Blog creation with Hugo</h1>
+    <span class="post-date">Apr 26, 2015 &middot; 3 minute read
+    
+    <br/>
+    
+    <a class="label" href="http://sylvain-bugat.github.io//categories/blog">blog</a><a class="label" href="http://sylvain-bugat.github.io//categories/hugo">hugo</a>
+    </span>
+    
+
+<hr />
+
+<p><a href="http://gohugo.io/">Hugo</a> is a nice and fast blog (or static sites) creation tools written in <a href="https://golang.org/">Go</a>.</p>
+
+<h1 id="installation:370c8eac8167efd517bb2a591c622965">Installation</h1>
+
+<p>The installation of Hugo is very simple, you just have to download the package/executable from the <a href="https://github.com/spf13/hugo/releases/latest">GitHub lastest release page</a> and install it or copy it in a directory accessible with the <strong>PATH</strong> variable.</p>
+
+<h3 id="debian-raspbian:370c8eac8167efd517bb2a591c622965">Debian/Raspbian</h3>
+
+<p>On Debian (and Raspbian), <strong>.deb</strong> packages are available to download for i386, amd64 and armhf. .deb packages are very simple to install with <strong>dpkg</strong>.</p>
+
+<p>Example on Raspbian (Raspberry PI B model) ARM Linux (<strong>take the lastest version if a more recent version is available!</strong>):</p>
+
+<pre><code class="language-bash">wget https://github.com/spf13/hugo/releases/download/v0.13/hugo_0.13_armhf.deb
+sudo dpkg -i hugo_0.13_armhf.deb
+</code></pre>
+
+<p>And it&rsquo;s done, just type <strong>hugo version</strong> to test the installation.</p>
+
+<h3 id="raw-executable:370c8eac8167efd517bb2a591c622965">Raw executable</h3>
+
+<p>On other x64 Linux/UNIX (<strong>take the lastest version if a more recent version is available!</strong>):</p>
+
+<pre><code class="language-bash">#get the hugo tarball
+wget https://github.com/spf13/hugo/releases/download/v0.13/hugo_0.13_linux_amd64.tar.gz
+tar -xzvf hugo_0.13_linux_amd64.tar.gz
+
+#You can copy the hugo binary somewhere else before adding it to the PATH
+cd hugo_0.13_linux_amd64
+#A symbolic link or an alias can be defined to use directly hugo by typing &quot;hugo&quot; instead of &quot;hugo_0.13_linux_amd64&quot;
+ln -s ln -s hugo_0.13_linux_amd64 hugo
+#Temporary PATH export to test only the executable from anywhere
+export PATH=&quot;${PATH}:${PWD}&quot;
+</code></pre>
+
+<p>And it&rsquo;s done, just type <strong>hugo version</strong> to test the installation. You can customize the user account profile to automatically set the <strong>PATH</strong> variable.</p>
+
+<h1 id="initialize-a-new-site:370c8eac8167efd517bb2a591c622965">Initialize a new site</h1>
+
+<p>You can look at the official <a href="http://gohugo.io/overview/quickstart/">Hugo quickstart video</a> to have another example.</p>
+
+<h3 id="create-the-site-directories:370c8eac8167efd517bb2a591c622965">Create the site directories</h3>
+
+<p>Into the target empty directory use the <code>hugo</code> command with <code>new site .</code> arguments to create all</p>
+
+<pre><code class="language-bash">hugo new site .
+</code></pre>
+
+<p>The created files and directories are:</p>
+
+<pre><code class="language-bash">archetypes
+config.toml
+content
+data
+layouts
+static
+</code></pre>
+
+<p>The <code>config.toml</code> file is the main configuration file and the <code>content</code> directory will contain site pages.</p>
+
+<h3 id="installing-a-theme:370c8eac8167efd517bb2a591c622965">Installing a theme</h3>
+
+<p>A least one theme is required to skin the site. Available themes are listed on this dedicated <a href="https://github.com/spf13/hugoThemes">GitHub project</a>.</p>
+
+<p>By using the <code>git</code> command the [hugo base theme] can be get from the site main directory:</p>
+
+<pre><code class="language-bash">mkdir -p themes
+cd themes
+git clone https://github.com/crakjie/hugo-base-theme.git
+</code></pre>
+
+<p>If you don&rsquo;t have git installed, just download <a href="https://github.com/crakjie/hugo-base-theme/archive/master.zip">the zip archive</a> from this theme repository and unzip it in your themes sub-directory.</p>
+
+<h3 id="installing-all-themes:370c8eac8167efd517bb2a591c622965">Installing all themes</h3>
+
+<p>It&rsquo;s possible to install all themes at once with the <code>git</code> command from the site main directory:</p>
+
+<pre><code class="language-bash">git clone --recursive https://github.com/spf13/hugoThemes.git themes
+</code></pre>
+
+<h3 id="configure-the-site:370c8eac8167efd517bb2a591c622965">Configure the site</h3>
+
+<p>The sample configuration file contains:</p>
+
+<pre><code class="language-bash">baseurl = &quot;http://yourSiteHere/&quot;
+languageCode = &quot;en-us&quot;
+title = &quot;My New Hugo Site&quot;
+</code></pre>
+
+<p>To configure the installed theme, just add this line:</p>
+
+<pre><code class="language-bash">theme=&quot;hugo-base-theme&quot;
+</code></pre>
+
+<p>Other parameters can be modified as you wish.</p>
+
+<h3 id="creating-a-blog-post:370c8eac8167efd517bb2a591c622965">Creating a blog post</h3>
+
+<p>From the</p>
+
+<pre><code class="language-bash">hugo new post/test.md 
+</code></pre>
+
+<p>This command will create a <code>test.md</code> file into the <code>content/post</code> directory with some header fields:</p>
+
+<pre><code>+++
+date = &quot;2015-04-29T23:10:31+02:00&quot;
+title = &quot;test&quot;
+weight = 5
+
+[menu]
+  [menu.main]
+    parent = &quot;x&quot;
+
++++
+</code></pre>
+
+<p>You can write a test content like <strong>Your skill is great!</strong> after this header.</p>
+
+<h1 id="test-the-new-site:370c8eac8167efd517bb2a591c622965">Test the new site</h1>
+
+<p>Now test the site with this command, <strong>let&rsquo;s rock</strong>:</p>
+
+<pre><code class="language-bash">hugo server
+</code></pre>
+
+<p>The default server URL is <a href="http://localhost:1313/">http://localhost:1313/</a> and the site must be displayed on your browser.</p>
+
+  </div>
+  
+</div>
+
+
+
+
+<script src="http://sylvain-bugat.github.io//js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

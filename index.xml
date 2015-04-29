@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Batch cavern</title>
+    <link>http://sylvain-bugat.github.io/</link>
+    <description>Recent content on Batch cavern</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 29 Apr 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://sylvain-bugat.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About Me</title>
+      <link>http://sylvain-bugat.github.io/about/</link>
+      <pubDate>Wed, 29 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://sylvain-bugat.github.io/about/</guid>
+      <description>
+
+&lt;p&gt;Hello,&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m currently working as a DevOps for a mobile virtual operator.&lt;/p&gt;
+
+&lt;p&gt;My current open-source projects are on my &lt;a href=&#34;https://github.com/Sylvain-Bugat&#34;&gt;GitHub page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;contact:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Contact&lt;/h3&gt;
+
+&lt;p&gt;You can contact me directly by &lt;a href=&#34;email:Sylvain-Bugat@users.noreply.github.com&#34;&gt;e-mail&lt;/a&gt; or by using &lt;a href=&#34;http://www.linkedin.com/in/sylvainbugat&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Blog creation with Hugo</title>
+      <link>http://sylvain-bugat.github.io/blog/2015/04/26/blog-creation-with-hugo/</link>
+      <pubDate>Sun, 26 Apr 2015 19:05:20 +0200</pubDate>
+      
+      <guid>http://sylvain-bugat.github.io/blog/2015/04/26/blog-creation-with-hugo/</guid>
+      <description>
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; is a nice and fast blog (or static sites) creation tools written in &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;installation:370c8eac8167efd517bb2a591c622965&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;The installation of Hugo is very simple, you just have to download the package/executable from the &lt;a href=&#34;https://github.com/spf13/hugo/releases/latest&#34;&gt;GitHub lastest release page&lt;/a&gt; and install it or copy it in a directory accessible with the &lt;strong&gt;PATH&lt;/strong&gt; variable.&lt;/p&gt;
+
+&lt;h3 id=&#34;debian-raspbian:370c8eac8167efd517bb2a591c622965&#34;&gt;Debian/Raspbian&lt;/h3&gt;
+
+&lt;p&gt;On Debian (and Raspbian), &lt;strong&gt;.deb&lt;/strong&gt; packages are available to download for i386, amd64 and armhf. .deb packages are very simple to install with &lt;strong&gt;dpkg&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Example on Raspbian (Raspberry PI B model) ARM Linux (&lt;strong&gt;take the lastest version if a more recent version is available!&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget https://github.com/spf13/hugo/releases/download/v0.13/hugo_0.13_armhf.deb
+sudo dpkg -i hugo_0.13_armhf.deb
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And it&amp;rsquo;s done, just type &lt;strong&gt;hugo version&lt;/strong&gt; to test the installation.&lt;/p&gt;
+
+&lt;h3 id=&#34;raw-executable:370c8eac8167efd517bb2a591c622965&#34;&gt;Raw executable&lt;/h3&gt;
+
+&lt;p&gt;On other x64 Linux/UNIX (&lt;strong&gt;take the lastest version if a more recent version is available!&lt;/strong&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#get the hugo tarball
+wget https://github.com/spf13/hugo/releases/download/v0.13/hugo_0.13_linux_amd64.tar.gz
+tar -xzvf hugo_0.13_linux_amd64.tar.gz
+
+#You can copy the hugo binary somewhere else before adding it to the PATH
+cd hugo_0.13_linux_amd64
+#A symbolic link or an alias can be defined to use directly hugo by typing &amp;quot;hugo&amp;quot; instead of &amp;quot;hugo_0.13_linux_amd64&amp;quot;
+ln -s ln -s hugo_0.13_linux_amd64 hugo
+#Temporary PATH export to test only the executable from anywhere
+export PATH=&amp;quot;${PATH}:${PWD}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And it&amp;rsquo;s done, just type &lt;strong&gt;hugo version&lt;/strong&gt; to test the installation. You can customize the user account profile to automatically set the &lt;strong&gt;PATH&lt;/strong&gt; variable.&lt;/p&gt;
+
+&lt;h1 id=&#34;initialize-a-new-site:370c8eac8167efd517bb2a591c622965&#34;&gt;Initialize a new site&lt;/h1&gt;
+
+&lt;p&gt;You can look at the official &lt;a href=&#34;http://gohugo.io/overview/quickstart/&#34;&gt;Hugo quickstart video&lt;/a&gt; to have another example.&lt;/p&gt;
+
+&lt;h3 id=&#34;create-the-site-directories:370c8eac8167efd517bb2a591c622965&#34;&gt;Create the site directories&lt;/h3&gt;
+
+&lt;p&gt;Into the target empty directory use the &lt;code&gt;hugo&lt;/code&gt; command with &lt;code&gt;new site .&lt;/code&gt; arguments to create all&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo new site .
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The created files and directories are:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;archetypes
+config.toml
+content
+data
+layouts
+static
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;config.toml&lt;/code&gt; file is the main configuration file and the &lt;code&gt;content&lt;/code&gt; directory will contain site pages.&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-a-theme:370c8eac8167efd517bb2a591c622965&#34;&gt;Installing a theme&lt;/h3&gt;
+
+&lt;p&gt;A least one theme is required to skin the site. Available themes are listed on this dedicated &lt;a href=&#34;https://github.com/spf13/hugoThemes&#34;&gt;GitHub project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;By using the &lt;code&gt;git&lt;/code&gt; command the [hugo base theme] can be get from the site main directory:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;mkdir -p themes
+cd themes
+git clone https://github.com/crakjie/hugo-base-theme.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t have git installed, just download &lt;a href=&#34;https://github.com/crakjie/hugo-base-theme/archive/master.zip&#34;&gt;the zip archive&lt;/a&gt; from this theme repository and unzip it in your themes sub-directory.&lt;/p&gt;
+
+&lt;h3 id=&#34;installing-all-themes:370c8eac8167efd517bb2a591c622965&#34;&gt;Installing all themes&lt;/h3&gt;
+
+&lt;p&gt;It&amp;rsquo;s possible to install all themes at once with the &lt;code&gt;git&lt;/code&gt; command from the site main directory:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone --recursive https://github.com/spf13/hugoThemes.git themes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;configure-the-site:370c8eac8167efd517bb2a591c622965&#34;&gt;Configure the site&lt;/h3&gt;
+
+&lt;p&gt;The sample configuration file contains:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;baseurl = &amp;quot;http://yourSiteHere/&amp;quot;
+languageCode = &amp;quot;en-us&amp;quot;
+title = &amp;quot;My New Hugo Site&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To configure the installed theme, just add this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;theme=&amp;quot;hugo-base-theme&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Other parameters can be modified as you wish.&lt;/p&gt;
+
+&lt;h3 id=&#34;creating-a-blog-post:370c8eac8167efd517bb2a591c622965&#34;&gt;Creating a blog post&lt;/h3&gt;
+
+&lt;p&gt;From the&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo new post/test.md 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command will create a &lt;code&gt;test.md&lt;/code&gt; file into the &lt;code&gt;content/post&lt;/code&gt; directory with some header fields:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+date = &amp;quot;2015-04-29T23:10:31+02:00&amp;quot;
+title = &amp;quot;test&amp;quot;
+weight = 5
+
+[menu]
+  [menu.main]
+    parent = &amp;quot;x&amp;quot;
+
++++
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can write a test content like &lt;strong&gt;Your skill is great!&lt;/strong&gt; after this header.&lt;/p&gt;
+
+&lt;h1 id=&#34;test-the-new-site:370c8eac8167efd517bb2a591c622965&#34;&gt;Test the new site&lt;/h1&gt;
+
+&lt;p&gt;Now test the site with this command, &lt;strong&gt;let&amp;rsquo;s rock&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;hugo server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The default server URL is &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt; and the site must be displayed on your browser.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>License</title>
+      <link>http://sylvain-bugat.github.io/license/</link>
+      <pubDate>Sun, 26 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://sylvain-bugat.github.io/license/</guid>
+      <description>
+
+&lt;h3 id=&#34;content-license:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Content license&lt;/h3&gt;
+
+&lt;p&gt;All non-code blog content is licensed under &lt;a href=&#34;http://creativecommons.org/licenses/by-nc-sa/3.0/&#34;&gt;Creative Commons BY-NC-SA&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;code-license:53e892b8b41cc4caece1cfd5ef21d6e7&#34;&gt;Code license&lt;/h3&gt;
+
+&lt;p&gt;All source code files and snippets found on this blog, unless otherwise explicitly noted, are licensed under the terms below.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The MIT License (MIT)&lt;/p&gt;
+
+&lt;p&gt;Copyright &amp;copy; 2015 Sylvain Bugat&lt;/p&gt;
+
+&lt;p&gt;Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &amp;ldquo;Software&amp;rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:&lt;/p&gt;
+
+&lt;p&gt;The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.&lt;/p&gt;
+
+&lt;p&gt;THE SOFTWARE IS PROVIDED &amp;ldquo;AS IS&amp;rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

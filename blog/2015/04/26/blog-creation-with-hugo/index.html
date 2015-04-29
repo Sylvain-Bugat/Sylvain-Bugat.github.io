@@ -82,11 +82,11 @@
 
 <h1 id="installation:370c8eac8167efd517bb2a591c622965">Installation</h1>
 
-<p>The installation of Hugo is very simple, you just have to download the package/executable from the <a href="https://github.com/spf13/hugo/releases/latest">GitHub lastest release page</a> and install it or copy it in a directory accessible with the <strong>PATH</strong> variable.</p>
+<p>The installation of Hugo is very simple, you just have to download the package/executable from the <a href="https://github.com/spf13/hugo/releases/latest">GitHub lastest release page</a> and install it or copy it in a directory accessible with the <code>PATH</code> variable.</p>
 
 <h3 id="debian-raspbian:370c8eac8167efd517bb2a591c622965">Debian/Raspbian</h3>
 
-<p>On Debian (and Raspbian), <strong>.deb</strong> packages are available to download for i386, amd64 and armhf. .deb packages are very simple to install with <strong>dpkg</strong>.</p>
+<p>On Debian (and Raspbian), <code>deb</code> packages are available to download for i386, amd64 and armhf. .deb packages are very simple to install with <code>dpkg</code>.</p>
 
 <p>Example on Raspbian (Raspberry PI B model) ARM Linux (<strong>take the lastest version if a more recent version is available!</strong>):</p>
 
@@ -94,7 +94,7 @@
 sudo dpkg -i hugo_0.13_armhf.deb
 </code></pre>
 
-<p>And it&rsquo;s done, just type <strong>hugo version</strong> to test the installation.</p>
+<p>And it&rsquo;s done, just type <code>hugo version</code> to test the installation.</p>
 
 <h3 id="raw-executable:370c8eac8167efd517bb2a591c622965">Raw executable</h3>
 
@@ -112,7 +112,7 @@ ln -s ln -s hugo_0.13_linux_amd64 hugo
 export PATH=&quot;${PATH}:${PWD}&quot;
 </code></pre>
 
-<p>And it&rsquo;s done, just type <strong>hugo version</strong> to test the installation. You can customize the user account profile to automatically set the <strong>PATH</strong> variable.</p>
+<p>And it&rsquo;s done, just type <code>hugo version</code> to test the installation. You can customize the user account profile to automatically set the <code>PATH</code> variable.</p>
 
 <h1 id="initialize-a-new-site:370c8eac8167efd517bb2a591c622965">Initialize a new site</h1>
 
@@ -156,6 +156,8 @@ git clone https://github.com/crakjie/hugo-base-theme.git
 
 <pre><code class="language-bash">git clone --recursive https://github.com/spf13/hugoThemes.git themes
 </code></pre>
+
+<p>All themes can be tested to see which one do you prefer. <strong>Note: some seems partially or totally broken due to Hugo updates?</strong></p>
 
 <h3 id="configure-the-site:370c8eac8167efd517bb2a591c622965">Configure the site</h3>
 

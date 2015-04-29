@@ -43,11 +43,11 @@
 
 &lt;h1 id=&#34;installation:370c8eac8167efd517bb2a591c622965&#34;&gt;Installation&lt;/h1&gt;
 
-&lt;p&gt;The installation of Hugo is very simple, you just have to download the package/executable from the &lt;a href=&#34;https://github.com/spf13/hugo/releases/latest&#34;&gt;GitHub lastest release page&lt;/a&gt; and install it or copy it in a directory accessible with the &lt;strong&gt;PATH&lt;/strong&gt; variable.&lt;/p&gt;
+&lt;p&gt;The installation of Hugo is very simple, you just have to download the package/executable from the &lt;a href=&#34;https://github.com/spf13/hugo/releases/latest&#34;&gt;GitHub lastest release page&lt;/a&gt; and install it or copy it in a directory accessible with the &lt;code&gt;PATH&lt;/code&gt; variable.&lt;/p&gt;
 
 &lt;h3 id=&#34;debian-raspbian:370c8eac8167efd517bb2a591c622965&#34;&gt;Debian/Raspbian&lt;/h3&gt;
 
-&lt;p&gt;On Debian (and Raspbian), &lt;strong&gt;.deb&lt;/strong&gt; packages are available to download for i386, amd64 and armhf. .deb packages are very simple to install with &lt;strong&gt;dpkg&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;On Debian (and Raspbian), &lt;code&gt;deb&lt;/code&gt; packages are available to download for i386, amd64 and armhf. .deb packages are very simple to install with &lt;code&gt;dpkg&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;Example on Raspbian (Raspberry PI B model) ARM Linux (&lt;strong&gt;take the lastest version if a more recent version is available!&lt;/strong&gt;):&lt;/p&gt;
 
@@ -55,7 +55,7 @@
 sudo dpkg -i hugo_0.13_armhf.deb
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;And it&amp;rsquo;s done, just type &lt;strong&gt;hugo version&lt;/strong&gt; to test the installation.&lt;/p&gt;
+&lt;p&gt;And it&amp;rsquo;s done, just type &lt;code&gt;hugo version&lt;/code&gt; to test the installation.&lt;/p&gt;
 
 &lt;h3 id=&#34;raw-executable:370c8eac8167efd517bb2a591c622965&#34;&gt;Raw executable&lt;/h3&gt;
 
@@ -73,7 +73,7 @@ ln -s ln -s hugo_0.13_linux_amd64 hugo
 export PATH=&amp;quot;${PATH}:${PWD}&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;And it&amp;rsquo;s done, just type &lt;strong&gt;hugo version&lt;/strong&gt; to test the installation. You can customize the user account profile to automatically set the &lt;strong&gt;PATH&lt;/strong&gt; variable.&lt;/p&gt;
+&lt;p&gt;And it&amp;rsquo;s done, just type &lt;code&gt;hugo version&lt;/code&gt; to test the installation. You can customize the user account profile to automatically set the &lt;code&gt;PATH&lt;/code&gt; variable.&lt;/p&gt;
 
 &lt;h1 id=&#34;initialize-a-new-site:370c8eac8167efd517bb2a591c622965&#34;&gt;Initialize a new site&lt;/h1&gt;
 
@@ -117,6 +117,8 @@ git clone https://github.com/crakjie/hugo-base-theme.git
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git clone --recursive https://github.com/spf13/hugoThemes.git themes
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All themes can be tested to see which one do you prefer. &lt;strong&gt;Note: some seems partially or totally broken due to Hugo updates?&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;configure-the-site:370c8eac8167efd517bb2a591c622965&#34;&gt;Configure the site&lt;/h3&gt;
 

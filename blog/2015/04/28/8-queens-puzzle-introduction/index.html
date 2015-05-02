@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>8 queens puzzle introduction &middot; Sylvain Bugat</title>
+
+  
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole-overrides.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde-x.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/chessboard/chessboard-0.3.0.css">
+
+  
+  <script src="http://sylvain-bugat.github.io//js/jquery/jquery-2.1.3.min.js"></script>
+  <script src="http://sylvain-bugat.github.io//js/chessboard/chessboard-0.3.0.js"></script>
+ 
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="introduction of the N queens puzzle post series">
+  <meta name="keywords" content="8 queens puzzle,8 queens,algorithm,N queens puzzle,N queens,puzzle,chessboard,chess,blog">
+  
+</head>
+<body class="theme-base-0d layout-reverse">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>Sylvain Bugat</h1>
+      <p class="lead"><p>We require more batchs!</p>
+</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://sylvain-bugat.github.io//">Blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="/about/">About Me</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/Sylvain-Bugat"><i class="fa fa-github-square fa-3x"></i></a>
+      <a href="https://www.linkedin.com/in/sylvainbugat"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      
+      
+      
+      </li>
+    </ul>
+
+    <p>Copyright &copy; 2015 <a href="http://sylvain-bugat.github.io//license">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>8 queens puzzle introduction</h1>
+    <span class="post-date">Apr 28, 2015 &middot; 2 minute read
+    
+    <br/>
+    
+    <a class="label" href="http://sylvain-bugat.github.io//categories/8-queens-puzzle">8 queens puzzle</a>
+    </span>
+    
+
+<p>This post is the first of a article series about the 8/N queens puzzle solving.</p>
+
+<h2 id="introduction:2767292a573dc549b9b4297b701af3ab">Introduction</h2>
+
+<p>The <a href="http://en.wikipedia.org/wiki/Eight_queens_puzzle">8 queens on a chessboard</a> is a classic puzzle which consists of placing 8 queens on a chessboard with only one queen on each row, column and diagonal, you can try it with this chessboard (errors are not visible yet):</p>
+
+<p><div id="board2" style="width: 400px"></div>
+<input type="button" id="clearBtn" value="Clear" /></p>
+
+<script>
+
+var board2 = new ChessBoard('board2', {
+    draggable: true,
+    dropOffBoard: 'trash',
+    sparePieces: true
+});
+$('#startBtn').on('click', board2.start);
+$('#clearBtn').on('click', board2.clear);
+
+</script>
+
+<p>This base Javascript is from <a href="http://chessboardjs.com/">chessboard.js.com</a> (<a href="https://github.com/oakmac/chessboardjs/">GitHub link</a>) under the <a href="https://github.com/oakmac/chessboardjs/blob/master/LICENSE">MIT license</a>.
+Queen image is from <a href="http://pixabay.com/en/chess-queen-meeple-white-game-36310/">Pixabay</a> under the <a href="http://creativecommons.org/publicdomain/zero/1.0/deed">CC0 Public Domain</a>.</p>
+
+<h3 id="extention-to-n-queens:2767292a573dc549b9b4297b701af3ab">Extention to N queens</h3>
+
+<p>This puzzle can be extended to N queens on a N x N chessboard and a higher value of N</p>
+
+<h3 id="solutions-of-the-puzzle:2767292a573dc549b9b4297b701af3ab">Solutions of the puzzle</h3>
+
+<p>Known number of solutions for N from 1 to 26 are:</p>
+
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>number of solutions</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>10</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>4</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>40</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>92</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>352</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>724</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>2 680</td>
+</tr>
+
+<tr>
+<td>12</td>
+<td>14 200</td>
+</tr>
+
+<tr>
+<td>13</td>
+<td>73 712</td>
+</tr>
+
+<tr>
+<td>14</td>
+<td>365 596</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td>2 279 184</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td>14 772 512</td>
+</tr>
+
+<tr>
+<td>17</td>
+<td>95 815 104</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td>666 090 624</td>
+</tr>
+
+<tr>
+<td>19</td>
+<td>4 968 057 848</td>
+</tr>
+
+<tr>
+<td>20</td>
+<td>39 029 188 884</td>
+</tr>
+
+<tr>
+<td>21</td>
+<td>314 666 222 712</td>
+</tr>
+
+<tr>
+<td>22</td>
+<td>2 691 008 701 644</td>
+</tr>
+
+<tr>
+<td>23</td>
+<td>24 233 937 684 440</td>
+</tr>
+
+<tr>
+<td>24</td>
+<td>227 514 171 973 736</td>
+</tr>
+
+<tr>
+<td>25</td>
+<td>2 207 893 435 808 352</td>
+</tr>
+
+<tr>
+<td>26</td>
+<td>22 317 699 616 364 044</td>
+</tr>
+</tbody>
+</table>
+
+<p>Source: sequence <a href="http://oeis.org/A000170">A000170</a> on <a href="http://oeis.org/">OEIS</a>.</p>
+
+<h3 id="resolve-the-puzzle:2767292a573dc549b9b4297b701af3ab">Resolve the puzzle</h3>
+
+<p>This puzzle can be solved with various algorithms. It is quite easy to resolve when N is low and it is a good pratice for testing various algorithms and optimisations.</p>
+
+<p>Next posts will explain greedy and back-tracking algorithms and possible optimisations with some benchmarks to compare. All shown code and algorithms are on this <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers">GitHub project</a> and are under the <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/LICENSE">MIT license</a>.</p>
+
+  </div>
+  
+</div>
+
+
+
+
+<script src="http://sylvain-bugat.github.io//js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

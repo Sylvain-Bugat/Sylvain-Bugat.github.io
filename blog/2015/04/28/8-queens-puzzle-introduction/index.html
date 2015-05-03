@@ -73,7 +73,7 @@
 <div class="content container">
   <div class="post">
     <h1>8 queens puzzle introduction</h1>
-    <span class="post-date">Apr 28, 2015 &middot; 2 minute read &middot; <a href="http://sylvain-bugat.github.io/blog/2015/04/28/8-queens-puzzle-introduction/#disqus_thread">Comments</a>
+    <span class="post-date">Apr 28, 2015 &middot; 3 minute read &middot; <a href="http://sylvain-bugat.github.io/blog/2015/04/28/8-queens-puzzle-introduction/#disqus_thread">Comments</a>
     
     <br/>
     
@@ -87,18 +87,18 @@
 
 <p>The <a href="http://en.wikipedia.org/wiki/Eight_queens_puzzle">8 queens on a chessboard</a> is a classic puzzle which consists of placing 8 queens on a chessboard with only one queen on each row, column and diagonal, you can try it with this chessboard (errors are not visible yet):</p>
 
-<p><div id="board2" style="width: 400px"></div>
-<input type="button" id="clearBtn" value="Clear" /></p>
+<p><div id="board" style="width: 400px"></div>
+<input type="button" id="clearButton" value="Clear chessboard" /></p>
 
 <script>
 
-var board2 = new ChessBoard('board2', {
+var board = new ChessBoard('board', {
     draggable: true,
     dropOffBoard: 'trash',
-    sparePieces: true
+    sparePieces: true,
+    showNotation: false
 });
-$('#startBtn').on('click', board2.start);
-$('#clearBtn').on('click', board2.clear);
+$('#clearButton').on('click', board.clear);
 
 </script>
 
@@ -107,7 +107,9 @@ Queen image is from <a href="http://pixabay.com/en/chess-queen-meeple-white-game
 
 <h3 id="extention-to-n-queens:2767292a573dc549b9b4297b701af3ab">Extention to N queens</h3>
 
-<p>This puzzle can be extended to N queens on a N x N chessboard and a higher value of N</p>
+<p>This puzzle can be extended to N queens on a N x N chessboard and a higher value of N increase needed operations to find all solutions.</p>
+
+<p>All implemented algorithm in this series of posts can count solutions on a chessboard of size N.</p>
 
 <h3 id="solutions-of-the-puzzle:2767292a573dc549b9b4297b701af3ab">Solutions of the puzzle</h3>
 
@@ -256,11 +258,28 @@ Queen image is from <a href="http://pixabay.com/en/chess-queen-meeple-white-game
 
 <p>Source: sequence <a href="http://oeis.org/A000170">A000170</a> on <a href="http://oeis.org/">OEIS</a>.</p>
 
-<h3 id="resolve-the-puzzle:2767292a573dc549b9b4297b701af3ab">Resolve the puzzle</h3>
+<p>On a classic chessboard there is 92 distinct solutions.</p>
+
+<h2 id="resolve-the-puzzle:2767292a573dc549b9b4297b701af3ab">Resolve the puzzle</h2>
 
 <p>This puzzle can be solved with various algorithms. It is quite easy to resolve when N is low and it is a good pratice for testing various algorithms and optimisations.</p>
 
-<p>Next posts will explain greedy and back-tracking algorithms and possible optimisations with some benchmarks to compare. All shown code and algorithms are on this <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers">GitHub project</a> and are under the <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/LICENSE">MIT license</a>.</p>
+<p>Next posts of this series will explain brute-force and back-tracking algorithms and possible optimisations with some benchmarks to compare. Algorithms will be implemented in <strong>Java</strong> and all shown code and algorithms are on this <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers">GitHub project</a> and are under the <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/LICENSE">MIT license</a>.</p>
+
+<h3 id="why-implementations-are-in-java:2767292a573dc549b9b4297b701af3ab">Why implementations are in Java?</h3>
+
+<p>Java is my main programming language and is very popular.</p>
+
+<p>Because of the Java runtime machine (JVM) overhead, Java programs can be slower than assembler/compiled languages(C, C++, Go, &hellip;) programs for CPU-bound programs.</p>
+
+<p><strong>But a fast Java program is faster than a slow assembler/C program because of algorithm optimisations.</strong>
+Nevertheless a same algortihm implemented in Java and in a optimized compiled language should be executed a faster by the compiled language program in most cases.</p>
+
+<h3 id="benchmarks:2767292a573dc549b9b4297b701af3ab">Benchmarks</h3>
+
+<p>Benchmarks will be implemented in Java with multiple runs of the same algorithms with the fastest and the slowest runs discarding.</p>
+
+<p>To compare diferent benchmarks, they need to be run on the same computer at the same time (sequentially), that will be the case in theses posts.</p>
 
   </div>
   <div id="disqus_thread"></div>

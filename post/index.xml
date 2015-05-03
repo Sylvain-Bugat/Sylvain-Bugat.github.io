@@ -23,18 +23,18 @@
 
 &lt;p&gt;The &lt;a href=&#34;http://en.wikipedia.org/wiki/Eight_queens_puzzle&#34;&gt;8 queens on a chessboard&lt;/a&gt; is a classic puzzle which consists of placing 8 queens on a chessboard with only one queen on each row, column and diagonal, you can try it with this chessboard (errors are not visible yet):&lt;/p&gt;
 
-&lt;p&gt;&lt;div id=&#34;board2&#34; style=&#34;width: 400px&#34;&gt;&lt;/div&gt;
-&lt;input type=&#34;button&#34; id=&#34;clearBtn&#34; value=&#34;Clear&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div id=&#34;board&#34; style=&#34;width: 400px&#34;&gt;&lt;/div&gt;
+&lt;input type=&#34;button&#34; id=&#34;clearButton&#34; value=&#34;Clear chessboard&#34; /&gt;&lt;/p&gt;
 
 &lt;script&gt;
 
-var board2 = new ChessBoard(&#39;board2&#39;, {
+var board = new ChessBoard(&#39;board&#39;, {
     draggable: true,
     dropOffBoard: &#39;trash&#39;,
-    sparePieces: true
+    sparePieces: true,
+    showNotation: false
 });
-$(&#39;#startBtn&#39;).on(&#39;click&#39;, board2.start);
-$(&#39;#clearBtn&#39;).on(&#39;click&#39;, board2.clear);
+$(&#39;#clearButton&#39;).on(&#39;click&#39;, board.clear);
 
 &lt;/script&gt;
 
@@ -43,7 +43,9 @@ Queen image is from &lt;a href=&#34;http://pixabay.com/en/chess-queen-meeple-whi
 
 &lt;h3 id=&#34;extention-to-n-queens:2767292a573dc549b9b4297b701af3ab&#34;&gt;Extention to N queens&lt;/h3&gt;
 
-&lt;p&gt;This puzzle can be extended to N queens on a N x N chessboard and a higher value of N&lt;/p&gt;
+&lt;p&gt;This puzzle can be extended to N queens on a N x N chessboard and a higher value of N increase needed operations to find all solutions.&lt;/p&gt;
+
+&lt;p&gt;All implemented algorithm in this series of posts can count solutions on a chessboard of size N.&lt;/p&gt;
 
 &lt;h3 id=&#34;solutions-of-the-puzzle:2767292a573dc549b9b4297b701af3ab&#34;&gt;Solutions of the puzzle&lt;/h3&gt;
 
@@ -192,11 +194,28 @@ Queen image is from &lt;a href=&#34;http://pixabay.com/en/chess-queen-meeple-whi
 
 &lt;p&gt;Source: sequence &lt;a href=&#34;http://oeis.org/A000170&#34;&gt;A000170&lt;/a&gt; on &lt;a href=&#34;http://oeis.org/&#34;&gt;OEIS&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h3 id=&#34;resolve-the-puzzle:2767292a573dc549b9b4297b701af3ab&#34;&gt;Resolve the puzzle&lt;/h3&gt;
+&lt;p&gt;On a classic chessboard there is 92 distinct solutions.&lt;/p&gt;
+
+&lt;h2 id=&#34;resolve-the-puzzle:2767292a573dc549b9b4297b701af3ab&#34;&gt;Resolve the puzzle&lt;/h2&gt;
 
 &lt;p&gt;This puzzle can be solved with various algorithms. It is quite easy to resolve when N is low and it is a good pratice for testing various algorithms and optimisations.&lt;/p&gt;
 
-&lt;p&gt;Next posts will explain greedy and back-tracking algorithms and possible optimisations with some benchmarks to compare. All shown code and algorithms are on this &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers&#34;&gt;GitHub project&lt;/a&gt; and are under the &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/LICENSE&#34;&gt;MIT license&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Next posts of this series will explain brute-force and back-tracking algorithms and possible optimisations with some benchmarks to compare. Algorithms will be implemented in &lt;strong&gt;Java&lt;/strong&gt; and all shown code and algorithms are on this &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers&#34;&gt;GitHub project&lt;/a&gt; and are under the &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/LICENSE&#34;&gt;MIT license&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;why-implementations-are-in-java:2767292a573dc549b9b4297b701af3ab&#34;&gt;Why implementations are in Java?&lt;/h3&gt;
+
+&lt;p&gt;Java is my main programming language and is very popular.&lt;/p&gt;
+
+&lt;p&gt;Because of the Java runtime machine (JVM) overhead, Java programs can be slower than assembler/compiled languages(C, C++, Go, &amp;hellip;) programs for CPU-bound programs.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;But a fast Java program is faster than a slow assembler/C program because of algorithm optimisations.&lt;/strong&gt;
+Nevertheless a same algortihm implemented in Java and in a optimized compiled language should be executed a faster by the compiled language program in most cases.&lt;/p&gt;
+
+&lt;h3 id=&#34;benchmarks:2767292a573dc549b9b4297b701af3ab&#34;&gt;Benchmarks&lt;/h3&gt;
+
+&lt;p&gt;Benchmarks will be implemented in Java with multiple runs of the same algorithms with the fastest and the slowest runs discarding.&lt;/p&gt;
+
+&lt;p&gt;To compare diferent benchmarks, they need to be run on the same computer at the same time (sequentially), that will be the case in theses posts.&lt;/p&gt;
 </description>
     </item>
     

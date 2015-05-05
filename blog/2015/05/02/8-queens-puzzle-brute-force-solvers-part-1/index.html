@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>8 queens puzzle brute-force solvers part 1 &middot; Sylvain Bugat</title>
+
+  
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole-overrides.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde-x.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/chessboard/chessboard-0.3.0.css">
+
+  
+  <script src="http://sylvain-bugat.github.io//js/jquery/jquery-2.1.3.min.js"></script>
+  <script src="http://sylvain-bugat.github.io//js/chessboard/chessboard-0.3.0.js"></script>
+ 
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link href="/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="N queens puzzle brute-force solvers part 1">
+  <meta name="keywords" content="8 queens puzzle,8 queens,algorithm,N queens puzzle,N queens,puzzle,chessboard,chess,blog">
+  
+</head>
+<body class="theme-base-0d layout-reverse">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>Sylvain Bugat</h1>
+      <p class="lead"><p>We require more batchs!</p>
+</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://sylvain-bugat.github.io//">Blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="/about/">About Me</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/Sylvain-Bugat"><i class="fa fa-github-square fa-3x"></i></a>
+      <a href="https://www.linkedin.com/in/sylvainbugat"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      
+      
+      
+      </li>
+    </ul>
+
+    <p>Copyright &copy; 2015 <a href="http://sylvain-bugat.github.io//license">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1>8 queens puzzle brute-force solvers part 1</h1>
+    <span class="post-date">May 2, 2015 &middot; 5 minute read &middot; <a href="http://sylvain-bugat.github.io/blog/2015/05/02/8-queens-puzzle-brute-force-solvers-part-1/#disqus_thread">Comments</a>
+    
+    <br/>
+    
+    <a class="label" href="http://sylvain-bugat.github.io//categories/code">code</a><a class="label" href="http://sylvain-bugat.github.io//categories/8-queens-puzzle">8 queens puzzle</a>
+    </span>
+    
+
+<h2 id="explanations:02e494252b7a2aa6ccffd65c467a0932">Explanations</h2>
+
+<h3 id="brute-force:02e494252b7a2aa6ccffd65c467a0932">Brute-force</h3>
+
+<p>Brute-force algorithms are also known as exhaustive algorithms, they consist of testing all possibilities with 8 (or more) queens on a chessboard like that for the first one:</p>
+
+<div id="board" style="width: 400px"></div>
+
+<script>
+
+var position = {
+  a8: 'wQ',
+  b8: 'wQ',
+  c8: 'wQ',
+  d8: 'wQ',
+  e8: 'wQ',
+  f8: 'wQ',
+  g8: 'wQ',
+  h8: 'wQ'
+};
+var board = new ChessBoard('board', {
+    position: position,
+    showNotation: false
+});
+
+</script>
+
+<p>In this case a limit of 8 queens is set to end the test and rollback the last placed queen, the next posibility tested will be:</p>
+
+<div id="board2" style="width: 400px"></div>
+
+<script>
+
+var position = {
+  a8: 'wQ',
+  b8: 'wQ',
+  c8: 'wQ',
+  d8: 'wQ',
+  e8: 'wQ',
+  f8: 'wQ',
+  g8: 'wQ',
+  a7: 'wQ'
+};
+var board2 = new ChessBoard('board2', {
+    position: position,
+    showNotation: false
+});
+
+</script>
+
+<p>It is clear that this algorithm is uneficient because the second placed queen is already invalid and next positionned and tested queens are just a waste of time. No solution can be found with 2 queens on the 2 first positions for example.</p>
+
+<h3 id="uber-brute-force:02e494252b7a2aa6ccffd65c467a0932">Uber-brute-force</h3>
+
+<p>It&rsquo;s possible to make an algorithm <strong>more uneficient</strong> with no limit of simultaneous placed queens like this chessboard as the first tested &ldquo;solution&rdquo;:</p>
+
+<div id="board3" style="width: 400px"></div>
+
+<script>
+
+var position = {
+  a8: 'wQ', b8: 'wQ', c8: 'wQ', d8: 'wQ', e8: 'wQ', f8: 'wQ', g8: 'wQ', h8: 'wQ',
+  a7: 'wQ', b7: 'wQ', c7: 'wQ', d7: 'wQ', e7: 'wQ', f7: 'wQ', g7: 'wQ', h7: 'wQ',
+  a6: 'wQ', b6: 'wQ', c6: 'wQ', d6: 'wQ', e6: 'wQ', f6: 'wQ', g6: 'wQ', h6: 'wQ',
+  a5: 'wQ', b5: 'wQ', c5: 'wQ', d5: 'wQ', e5: 'wQ', f5: 'wQ', g5: 'wQ', h5: 'wQ',
+  a4: 'wQ', b4: 'wQ', c4: 'wQ', d4: 'wQ', e4: 'wQ', f4: 'wQ', g4: 'wQ', h4: 'wQ',
+  a3: 'wQ', b3: 'wQ', c3: 'wQ', d3: 'wQ', e3: 'wQ', f3: 'wQ', g3: 'wQ', h3: 'wQ',
+  a2: 'wQ', b2: 'wQ', c2: 'wQ', d2: 'wQ', e2: 'wQ', f2: 'wQ', g2: 'wQ', h2: 'wQ',
+  a1: 'wQ', b1: 'wQ', c1: 'wQ', d1: 'wQ', e1: 'wQ', f1: 'wQ', g1: 'wQ', h1: 'wQ'
+};
+var board3 = new ChessBoard('board3', {
+    position: position,
+    showNotation: false
+});
+
+</script>
+
+<p>This tested chessboard is just insane only a brute-force program can test this as a solution. But this algorithm is a floor value to test speed-ups and optimisations.</p>
+
+<h2 id="implementations:02e494252b7a2aa6ccffd65c467a0932">Implementations</h2>
+
+<h3 id="uber-brute-force-1:02e494252b7a2aa6ccffd65c467a0932">Uber-brute-force</h3>
+
+<p>This is the slowest implementation I have done to resolve this puzzle:</p>
+
+<pre><code class="language-java">/** Chessboard represented by a list of lists. */
+private final List&lt;List&lt;Boolean&gt;&gt; chessboard;
+
+private void solve(final int x, final int y) {
+
+	// Put a queen on the current position
+	chessboard.get(x).set(y, Boolean.TRUE);
+
+	// Test if the chessboard is a solution with exactly N queens
+	if (checkSolutionChessboard()) {
+		solutionCount++;
+		print();
+	}
+	else {
+
+		//Recursive call to the next position
+		final int nextX = (x + 1) % chessboardSize;
+		//Switch to the next line
+		if (0 == nextX) {
+
+			//End of the chessboard check
+			if (y + 1 &lt; chessboardSize) {
+				solve(nextX, y + 1);
+			}
+		}
+		else {
+			solve(nextX, y);
+		}
+	}
+
+	// Remove the queen on the current position
+	chessboard.get(x).set(y, Boolean.FALSE);
+
+	//Recursive call to the next position
+	final int nextX = (x + 1) % chessboardSize;
+	//Switch to the next line
+	if (0 == nextX) {
+
+		//End of the chessboard check
+		if (y + 1 &lt; chessboardSize) {
+			solve(nextX, y + 1);
+		}
+	}
+	else {
+		solve(nextX, y);
+	}
+}
+</code></pre>
+
+<p>The complete implementation is in this source file <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/SlowBruteForceNQueensSolverWithListsNoQueensLimit.java">SlowBruteForceNQueensSolverWithListsNoQueensLimit</a>.</p>
+
+<p>This implementation has a lot of weakness:</p>
+
+<ul>
+<li>The algorithm don&rsquo;t stop after placing N queens</li>
+<li>The solution is checked by analyzing the full chessboard after placing each queen</li>
+<li>The chessboard is represented by list of lists</li>
+</ul>
+
+<p>The first point is a complexity overkill because it greatly increases the number of move required to test all possible solutions on the NxN chessboard. It&rsquo;s a waste of time to test any combination with over N queens, a back-track is needed to test another untested combination.</p>
+
+<h3 id="benchmarks:02e494252b7a2aa6ccffd65c467a0932">Benchmarks</h3>
+
+<p>These benchmarks are done on a <a href="http://ark.intel.com/products/52210/Intel-Core-i5-2500K-Processor-6M-Cache-up-to-3_70-GHz">Core i5 2500K</a>:</p>
+
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>execution time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>4</td>
+<td>4,57 ms</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>2,47 s</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>too long&hellip;</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>too long&hellip;</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="brute-force-1:02e494252b7a2aa6ccffd65c467a0932">Brute-force</h3>
+
+<p>This is just the previous implementation with a maximum limit of N placed queens at the same time on the chessboard:</p>
+
+<pre><code class="language-java">private void solve(final int x, final int y) {
+
+	// Put a queen on the current position
+	chessboard.get(x).set(y, Boolean.TRUE);
+
+	// All queens are sets on the chessboard then a solution may be present
+	if (getPlacedQueens() &gt;= chessboardSize) {
+		if (checkSolutionChessboard()) {
+			solutionCount++;
+			print();
+		}
+	}
+	else {
+
+		// Recursive call to the next position
+		final int nextX = (x + 1) % chessboardSize;
+		// Switch to the next line
+		if (0 == nextX) {
+
+			// End of the chessboard check
+			if (y + 1 &lt; chessboardSize) {
+				solve(nextX, y + 1);
+			}
+		}
+		else {
+			solve(nextX, y);
+		}
+	}
+
+	// Remove the queen on the current position
+	chessboard.get(x).set(y, Boolean.FALSE);
+
+	// Recursive call to the next position
+	final int nextX = (x + 1) % chessboardSize;
+	// Switch to the next line
+	if (0 == nextX) {
+
+		// End of the chessboard check
+		if (y + 1 &lt; chessboardSize) {
+			solve(nextX, y + 1);
+		}
+	}
+	else {
+		solve(nextX, y);
+	}
+}
+</code></pre>
+
+<p>The complete implementation is in this source file <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/SlowBruteForceNQueensSolverWithLists.java">SlowBruteForceNQueensSolverWithLists</a>.</p>
+
+<p>This implementation is still very unefficient but is a lot faster because a lot of dead combination are not tested. This optimisation is the first little step to implement a back-tracking algorithm.</p>
+
+<h3 id="benchmarks-1:02e494252b7a2aa6ccffd65c467a0932">Benchmarks</h3>
+
+<p>These benchmarks are done on a <a href="http://ark.intel.com/products/52210/Intel-Core-i5-2500K-Processor-6M-Cache-up-to-3_70-GHz">Core i5 2500K</a>:</p>
+
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>execution time</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>4</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>?</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>too long&hellip;</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="next-optimisations:02e494252b7a2aa6ccffd65c467a0932">Next optimisations?</h2>
+
+<p>Other optimisations will be tested in the part 2, stay tuned of go to the <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers">GitHub project</a> to have some algorithms preview!</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "batchcavern";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "batchcavern";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://sylvain-bugat.github.io//js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

@@ -188,7 +188,7 @@ private void solve(final int x, final int y) {
 
 &lt;tr&gt;
 &lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;too long&amp;hellip;&lt;/td&gt;
+&lt;td&gt;2h09m&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -197,6 +197,8 @@ private void solve(final int x, final int y) {
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;p&gt;Even on 6x6 chessboard, the needed time to count all solutions is very long!&lt;/p&gt;
 
 &lt;h3 id=&#34;brute-force-1:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Brute-force&lt;/h3&gt;
 
@@ -269,27 +271,27 @@ private void solve(final int x, final int y) {
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;?&lt;/td&gt;
+&lt;td&gt;3,50 ms&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;?&lt;/td&gt;
+&lt;td&gt;21,95 ms&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;?&lt;/td&gt;
+&lt;td&gt;432,14 ms&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;7&lt;/td&gt;
-&lt;td&gt;?&lt;/td&gt;
+&lt;td&gt;20,90 s&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;8&lt;/td&gt;
-&lt;td&gt;?&lt;/td&gt;
+&lt;td&gt;19.50 m&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -298,6 +300,8 @@ private void solve(final int x, final int y) {
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;p&gt;On 7x7 chessboard, the needed time to count all solutions is quite long!&lt;/p&gt;
 
 &lt;h2 id=&#34;next-optimisations:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Next optimisations?&lt;/h2&gt;
 

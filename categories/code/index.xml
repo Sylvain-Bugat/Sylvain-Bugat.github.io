@@ -6,8 +6,269 @@
     <description>Recent content in Code on Batch cavern</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 May 2015 12:38:15 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2015 20:46:15 +0200</lastBuildDate>
     <atom:link href="http://sylvain-bugat.github.io/categories/code/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>8 queens puzzle brute-force solvers part 2</title>
+      <link>http://sylvain-bugat.github.io/blog/2015/05/06/8-queens-puzzle-brute-force-solvers-part-2/</link>
+      <pubDate>Wed, 06 May 2015 20:46:15 +0200</pubDate>
+      
+      <guid>http://sylvain-bugat.github.io/blog/2015/05/06/8-queens-puzzle-brute-force-solvers-part-2/</guid>
+      <description>
+
+&lt;h2 id=&#34;adding-a-queen-constraint:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Adding a queen constraint&lt;/h2&gt;
+
+&lt;h3 id=&#34;explaination:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Explaination&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Constraint_programming&#34;&gt;Constraint programming&lt;/a&gt; consists of use some data structure to store some contraints that can be modified and checked faster than recompute it at each algorithm step.&lt;/p&gt;
+
+&lt;p&gt;In the N-queens-puzzle, the number of currently placed queens can stored in a variable, when a queen is put on the chessboard this variable must be incremented and when a queen is remove this variable must be decremented.&lt;/p&gt;
+
+&lt;h3 id=&#34;implementation:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;This is the previous implementation with a queen counter (variable  &lt;code&gt;placedQueens&lt;/code&gt;)  limit of N placed queens at the same time on the chessboard:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/** Chessboard represented by a list of lists. */
+private final List&amp;lt;List&amp;lt;Boolean&amp;gt;&amp;gt; chessboard;
+/** Current number of queens on the chessboard. */
+private int placedQueens;
+
+private void solve(final int x, final int y) {
+
+    // Put a queen on the current position
+    chessboard.get(x).set(y, Boolean.TRUE);
+    placedQueens++;
+
+    // All queens are sets then a solution may be present
+    if (placedQueens &amp;gt;= chessboardSize) {
+        if (checkSolutionChessboard()) {
+            solutionCount++;
+            print();
+        }
+    }
+    else {
+
+        // Recursive call to the next position
+        final int nextX = (x + 1) % chessboardSize;
+        // Switch to the next line
+        if (0 == nextX) {
+
+            // End of the chessboard check
+            if (y + 1 &amp;lt; chessboardSize) {
+                solve(nextX, y + 1);
+            }
+        }
+        else {
+            solve(nextX, y);
+        }
+    }
+
+    // Remove the queen on the current position
+    placedQueens--;
+    chessboard.get(x).set(y, Boolean.FALSE);
+
+    // Recursive call to the next position
+    final int nextX = (x + 1) % chessboardSize;
+    // Switch to the next line
+    if (0 == nextX) {
+
+        // End of the chessboard check
+        if (y + 1 &amp;lt; chessboardSize) {
+            solve(nextX, y + 1);
+        }
+    }
+    else {
+        solve(nextX, y);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The complete implementation is in this source file &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/BruteForceNQueensSolverWithLists.java&#34;&gt;BruteForceNQueensSolverWithLists&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;benchmarks:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Benchmarks&lt;/h3&gt;
+
+&lt;p&gt;These benchmarks are done on a &lt;a href=&#34;http://ark.intel.com/products/52210/Intel-Core-i5-2500K-Processor-6M-Cache-up-to-3_70-GHz&#34;&gt;Core i5 2500K&lt;/a&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;chessboard size&lt;/th&gt;
+&lt;th&gt;execution time&lt;/th&gt;
+&lt;th&gt;number of runs&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;146.68 µs&lt;/td&gt;
+&lt;td&gt;5000&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;4.24 ms&lt;/td&gt;
+&lt;td&gt;5000&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;162.88 ms&lt;/td&gt;
+&lt;td&gt;500&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;7.49 s&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;6.20 m&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;6.10 h&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;too long&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;On 9x9 chessboard, the needed time to count all solutions is very long!&lt;/p&gt;
+
+&lt;h2 id=&#34;use-a-two-dimentionnal-array-for-the-chessboard:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Use a two-dimentionnal array for the chessboard&lt;/h2&gt;
+
+&lt;h3 id=&#34;explaination-1:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Explaination&lt;/h3&gt;
+
+&lt;p&gt;The data structure used to represent the chessboard can be changed from a list of lists to a two-dimentionnal array. Data access is faster because it&amp;rsquo;s more direct without any method call, and the stored data can be a primitive type (boolean in this case intead of Boolean object).&lt;/p&gt;
+
+&lt;h3 id=&#34;implementation-1:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;This is the previous implementation with an two-dimentionnal array instead of a list of lists:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/** Chessboard represented by a 2 dimentionnal array. */
+private final boolean[][] chessboard;
+/** Current number of queens on the chessboard. */
+private int placedQueens;
+
+private void solve(final int x, final int y) {
+
+    // Put a queen on the current position
+    chessboard[x][y] = true;
+    placedQueens++;
+
+    // All queens are sets on the chessboard then a solution may be present
+    if (placedQueens &amp;gt;= chessboardSize) {
+        if (checkSolutionChessboard()) {
+            solutionCount++;
+            print();
+        }
+    } else {
+
+        // Recursive call to the next position
+        final int nextX = (x + 1) % chessboardSize;
+        // Switch to the next line
+        if (0 == nextX) {
+
+            // End of the chessboard check
+            if (y + 1 &amp;lt; chessboardSize) {
+                solve(nextX, y + 1);
+            }
+        } else {
+            solve(nextX, y);
+        }
+    }
+
+    // Remove the queen on the current position
+    placedQueens--;
+    chessboard[x][y] = false;
+
+    // Recursive call to the next position
+    final int nextX = (x + 1) % chessboardSize;
+    // Switch to the next line
+    if (0 == nextX) {
+
+        // End of the chessboard check
+        if (y + 1 &amp;lt; chessboardSize) {
+            solve(nextX, y + 1);
+        }
+    } else {
+        solve(nextX, y);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The complete implementation is in this source file &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/BruteForceNQueensSolverArray.java&#34;&gt;BruteForceNQueensSolverArray&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;benchmarks-1:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Benchmarks&lt;/h3&gt;
+
+&lt;p&gt;These benchmarks are done on a &lt;a href=&#34;http://ark.intel.com/products/52210/Intel-Core-i5-2500K-Processor-6M-Cache-up-to-3_70-GHz&#34;&gt;Core i5 2500K&lt;/a&gt;:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;chessboard size&lt;/th&gt;
+&lt;th&gt;execution time&lt;/th&gt;
+&lt;th&gt;number of runs&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;84.20 µs&lt;/td&gt;
+&lt;td&gt;5000&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;2.89 ms&lt;/td&gt;
+&lt;td&gt;5000&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;94.52 ms&lt;/td&gt;
+&lt;td&gt;500&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;4.12 s&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;3.50 m&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;9&lt;/td&gt;
+&lt;td&gt;too long&amp;hellip;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;On 8x8 chessboard, the needed time to count all solutions is long!&lt;/p&gt;
+
+&lt;h2 id=&#34;next-optimisations:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Next optimisations?&lt;/h2&gt;
+
+&lt;p&gt;Other optimisations will be tested in the part 3, stay tuned of go to the &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers&#34;&gt;GitHub project&lt;/a&gt; to have some algorithms preview!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>8 queens puzzle brute-force solvers part 1</title>
@@ -17,9 +278,9 @@
       <guid>http://sylvain-bugat.github.io/blog/2015/05/02/8-queens-puzzle-brute-force-solvers-part-1/</guid>
       <description>
 
-&lt;h2 id=&#34;explanations:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Explanations&lt;/h2&gt;
+&lt;h2 id=&#34;brute-force:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Brute-force&lt;/h2&gt;
 
-&lt;h3 id=&#34;brute-force:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Brute-force&lt;/h3&gt;
+&lt;h3 id=&#34;explanation:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Explanation&lt;/h3&gt;
 
 &lt;p&gt;Brute-force algorithms are also known as exhaustive algorithms, they consist of testing all possibilities with 8 (or more) queens on a chessboard like that for the first one:&lt;/p&gt;
 
@@ -69,7 +330,9 @@ var board2 = new ChessBoard(&#39;board2&#39;, {
 
 &lt;p&gt;It is clear that this algorithm is uneficient because the second placed queen is already invalid and next positionned and tested queens are just a waste of time. No solution can be found with 2 queens on the 2 first positions for example.&lt;/p&gt;
 
-&lt;h3 id=&#34;uber-brute-force:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Uber-brute-force&lt;/h3&gt;
+&lt;h2 id=&#34;uber-brute-force:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Uber-brute-force&lt;/h2&gt;
+
+&lt;h3 id=&#34;explanation-1:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Explanation&lt;/h3&gt;
 
 &lt;p&gt;It&amp;rsquo;s possible to make an algorithm &lt;strong&gt;more uneficient&lt;/strong&gt; with no limit of simultaneous placed queens like this chessboard as the first tested &amp;ldquo;solution&amp;rdquo;:&lt;/p&gt;
 
@@ -94,11 +357,9 @@ var board3 = new ChessBoard(&#39;board3&#39;, {
 
 &lt;/script&gt;
 
-&lt;p&gt;This tested chessboard is just insane only a brute-force program can test this as a solution. But this algorithm is a floor value to test speed-ups and optimisations.&lt;/p&gt;
+&lt;p&gt;This tested chessboard is just insane, only a brute-force program can test this as a solution. But this algorithm is a floor value to test speed-ups and optimisations.&lt;/p&gt;
 
-&lt;h2 id=&#34;implementations:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Implementations&lt;/h2&gt;
-
-&lt;h3 id=&#34;uber-brute-force-1:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Uber-brute-force&lt;/h3&gt;
+&lt;h3 id=&#34;implementation:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Implementation&lt;/h3&gt;
 
 &lt;p&gt;This is the slowest implementation I have done to resolve this puzzle:&lt;/p&gt;
 
@@ -107,47 +368,47 @@ private final List&amp;lt;List&amp;lt;Boolean&amp;gt;&amp;gt; chessboard;
 
 private void solve(final int x, final int y) {
 
-	// Put a queen on the current position
-	chessboard.get(x).set(y, Boolean.TRUE);
+    // Put a queen on the current position
+    chessboard.get(x).set(y, Boolean.TRUE);
 
-	// Test if the chessboard is a solution with exactly N queens
-	if (checkSolutionChessboard()) {
-		solutionCount++;
-		print();
-	}
-	else {
+    // Test if the chessboard is a solution with exactly N queens
+    if (checkSolutionChessboard()) {
+        solutionCount++;
+        print();
+    }
+    else {
 
-		//Recursive call to the next position
-		final int nextX = (x + 1) % chessboardSize;
-		//Switch to the next line
-		if (0 == nextX) {
+        //Recursive call to the next position
+        final int nextX = (x + 1) % chessboardSize;
+        //Switch to the next line
+        if (0 == nextX) {
 
-			//End of the chessboard check
-			if (y + 1 &amp;lt; chessboardSize) {
-				solve(nextX, y + 1);
-			}
-		}
-		else {
-			solve(nextX, y);
-		}
-	}
+            //End of the chessboard check
+            if (y + 1 &amp;lt; chessboardSize) {
+                solve(nextX, y + 1);
+            }
+        }
+        else {
+            solve(nextX, y);
+        }
+    }
 
-	// Remove the queen on the current position
-	chessboard.get(x).set(y, Boolean.FALSE);
+    // Remove the queen on the current position
+    chessboard.get(x).set(y, Boolean.FALSE);
 
-	//Recursive call to the next position
-	final int nextX = (x + 1) % chessboardSize;
-	//Switch to the next line
-	if (0 == nextX) {
+    //Recursive call to the next position
+    final int nextX = (x + 1) % chessboardSize;
+    //Switch to the next line
+    if (0 == nextX) {
 
-		//End of the chessboard check
-		if (y + 1 &amp;lt; chessboardSize) {
-			solve(nextX, y + 1);
-		}
-	}
-	else {
-		solve(nextX, y);
-	}
+        //End of the chessboard check
+        if (y + 1 &amp;lt; chessboardSize) {
+            solve(nextX, y + 1);
+        }
+    }
+    else {
+        solve(nextX, y);
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -161,7 +422,7 @@ private void solve(final int x, final int y) {
 &lt;li&gt;The chessboard is represented by list of lists&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;The first point is a complexity overkill because it greatly increases the number of move required to test all possible solutions on the NxN chessboard. It&amp;rsquo;s a waste of time to test any combination with over N queens, a back-track is needed to test another untested combination.&lt;/p&gt;
+&lt;p&gt;The first point is a complexity overkill because it greatly increases the number of moves required to test all possible solutions on the NxN chessboard. It&amp;rsquo;s a waste of time to test any combination with over N queens, a back-track is needed to test another untested combination.&lt;/p&gt;
 
 &lt;h3 id=&#34;benchmarks:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Benchmarks&lt;/h3&gt;
 
@@ -170,7 +431,7 @@ private void solve(final int x, final int y) {
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;N&lt;/th&gt;
+&lt;th&gt;chessboard size&lt;/th&gt;
 &lt;th&gt;execution time&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
@@ -178,12 +439,12 @@ private void solve(final int x, final int y) {
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;4,57 ms&lt;/td&gt;
+&lt;td&gt;4.57 ms&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;2,47 s&lt;/td&gt;
+&lt;td&gt;2.47 s&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -198,57 +459,62 @@ private void solve(final int x, final int y) {
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;Even on 6x6 chessboard, the needed time to count all solutions is very long!&lt;/p&gt;
+&lt;p&gt;Even on 6x6 chessboard, the time needed to count all solutions is very long!&lt;/p&gt;
 
-&lt;h3 id=&#34;brute-force-1:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Brute-force&lt;/h3&gt;
+&lt;h2 id=&#34;brute-force-1:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Brute-force&lt;/h2&gt;
+
+&lt;h3 id=&#34;implementation-1:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Implementation&lt;/h3&gt;
 
 &lt;p&gt;This is just the previous implementation with a maximum limit of N placed queens at the same time on the chessboard:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;private void solve(final int x, final int y) {
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/** Chessboard represented by a list of lists. */
+private final List&amp;lt;List&amp;lt;Boolean&amp;gt;&amp;gt; chessboard;
 
-	// Put a queen on the current position
-	chessboard.get(x).set(y, Boolean.TRUE);
+private void solve(final int x, final int y) {
 
-	// All queens are sets on the chessboard then a solution may be present
-	if (getPlacedQueens() &amp;gt;= chessboardSize) {
-		if (checkSolutionChessboard()) {
-			solutionCount++;
-			print();
-		}
-	}
-	else {
+    // Put a queen on the current position
+    chessboard.get(x).set(y, Boolean.TRUE);
 
-		// Recursive call to the next position
-		final int nextX = (x + 1) % chessboardSize;
-		// Switch to the next line
-		if (0 == nextX) {
+    // All queens are sets on the chessboard then a solution may be present
+    if (getPlacedQueens() &amp;gt;= chessboardSize) {
+        if (checkSolutionChessboard()) {
+            solutionCount++;
+            print();
+        }
+    }
+    else {
 
-			// End of the chessboard check
-			if (y + 1 &amp;lt; chessboardSize) {
-				solve(nextX, y + 1);
-			}
-		}
-		else {
-			solve(nextX, y);
-		}
-	}
+        // Recursive call to the next position
+        final int nextX = (x + 1) % chessboardSize;
+        // Switch to the next line
+        if (0 == nextX) {
 
-	// Remove the queen on the current position
-	chessboard.get(x).set(y, Boolean.FALSE);
+            // End of the chessboard check
+            if (y + 1 &amp;lt; chessboardSize) {
+                solve(nextX, y + 1);
+            }
+        }
+        else {
+            solve(nextX, y);
+        }
+    }
 
-	// Recursive call to the next position
-	final int nextX = (x + 1) % chessboardSize;
-	// Switch to the next line
-	if (0 == nextX) {
+    // Remove the queen on the current position
+    chessboard.get(x).set(y, Boolean.FALSE);
 
-		// End of the chessboard check
-		if (y + 1 &amp;lt; chessboardSize) {
-			solve(nextX, y + 1);
-		}
-	}
-	else {
-		solve(nextX, y);
-	}
+    // Recursive call to the next position
+    final int nextX = (x + 1) % chessboardSize;
+    // Switch to the next line
+    if (0 == nextX) {
+
+        // End of the chessboard check
+        if (y + 1 &amp;lt; chessboardSize) {
+            solve(nextX, y + 1);
+        }
+    }
+    else {
+        solve(nextX, y);
+    }
 }
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -263,7 +529,7 @@ private void solve(final int x, final int y) {
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th&gt;N&lt;/th&gt;
+&lt;th&gt;chessboard size&lt;/th&gt;
 &lt;th&gt;execution time&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
@@ -271,22 +537,22 @@ private void solve(final int x, final int y) {
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;3,50 ms&lt;/td&gt;
+&lt;td&gt;3.50 ms&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;21,95 ms&lt;/td&gt;
+&lt;td&gt;21.95 ms&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;432,14 ms&lt;/td&gt;
+&lt;td&gt;432.14 ms&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;7&lt;/td&gt;
-&lt;td&gt;20,90 s&lt;/td&gt;
+&lt;td&gt;20.90 s&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -301,11 +567,11 @@ private void solve(final int x, final int y) {
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;p&gt;On 7x7 chessboard, the needed time to count all solutions is quite long!&lt;/p&gt;
+&lt;p&gt;On 8x8 chessboard, the time needed to count all solutions is quite long!&lt;/p&gt;
 
 &lt;h2 id=&#34;next-optimisations:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Next optimisations?&lt;/h2&gt;
 
-&lt;p&gt;Other optimisations will be tested in the part 2, stay tuned of go to the &lt;a href=&#34;https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers&#34;&gt;GitHub project&lt;/a&gt; to have some algorithms preview!&lt;/p&gt;
+&lt;p&gt;Next optimisations are tested in the part 2, click on the link below.&lt;/p&gt;
 </description>
     </item>
     

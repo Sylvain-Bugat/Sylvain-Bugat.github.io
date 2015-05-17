@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>8 queens puzzle brute-force solvers part 3 &middot; Sylvain Bugat</title>
+  <title>8 queens puzzle brute-force solvers part 4 &middot; Sylvain Bugat</title>
 
   
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole.css">
@@ -33,7 +33,7 @@
   
   
 
-  <meta name="description" content="N queens puzzle brute-force solvers part 3">
+  <meta name="description" content="N queens puzzle brute-force solvers part 4">
   <meta name="keywords" content="8 queens puzzle,8 queens,algorithm,N queens puzzle,N queens,puzzle,chessboard,chess,blog">
   
 </head>
@@ -72,8 +72,8 @@
 
 <div class="content container">
   <div class="post">
-    <h1>8 queens puzzle brute-force solvers part 3</h1>
-    <span class="post-date">May 9, 2015 &middot; 3 minute read &middot; <a href="http://sylvain-bugat.github.io/blog/2015/05/09/8-queens-puzzle-brute-force-solvers-part-3/#disqus_thread">Comments</a>
+    <h1>8 queens puzzle brute-force solvers part 4</h1>
+    <span class="post-date">May 14, 2015 &middot; 4 minute read &middot; <a href="http://sylvain-bugat.github.io/blog/2015/05/14/8-queens-puzzle-brute-force-solvers-part-4/#disqus_thread">Comments</a>
     
     <br/>
     
@@ -81,150 +81,53 @@
     </span>
     
 
-<h2 id="use-a-one-dimensional-array-for-the-chessboard:6d48f140073f9b96eac74e4a8cc818ba">Use a one-dimensional array for the chessboard</h2>
+<h2 id="one-queen-per-line:0455adfa2265028898e1e89424046c1a">One queen per line</h2>
 
-<h3 id="explaination:6d48f140073f9b96eac74e4a8cc818ba">Explaination</h3>
+<h3 id="explaination:0455adfa2265028898e1e89424046c1a">Explaination</h3>
 
-<p>The data structure used to represent the chessboard can be changed from a two-dimensional array to a one-dimensional array. Recursive calls are faster because all N x N positions are sequentially acceded.</p>
+<p>One one queen can be placed per line, so when a queen is placed on any line it&rsquo;s useless to put one or more queens on the remaining position of this line.</p>
 
-<h3 id="implementation:6d48f140073f9b96eac74e4a8cc818ba">Implementation</h3>
+<p>For example with this chessboard, it&rsquo;s useless to put a queen on the last 7 positions:</p>
 
-<p>This is the previous implementation with a one-dimention array to represent the chessboard, his size is equal to N x N:</p>
+<div id="board" style="width: 400px"></div>
 
-<pre><code class="language-java">/** Chessboard with only one dimension with all lines. */
-private final boolean[] chessboard;
-/** Current number of placedQueens */
-private int placedQueens;
+<script>
 
-private void solve(final int position) {
+var position = {
+  a8: 'wQ'
+};
+var board = new ChessBoard('board', {
+    position: position,
+    showNotation: false
+});
 
-    // Put a queen on the current position
-    chessboard[position] = true;
-    placedQueens++;
+</script>
 
-    // All queens are sets then a solution may be present
-    if (placedQueens &gt;= chessboardSize) {
-        if (checkSolutionChessboard()) {
-            solutionCount++;
-            print();
-        }
-    }
-    else {
+<h3 id="implementation:0455adfa2265028898e1e89424046c1a">Implementation</h3>
 
-        // End of the chessboard check
-        if (position + 1 &lt; chessboard.length) {
-            solve(position + 1);
-        }
-    }
+<p>This is the previous implementation with a two dimensional array and a next line skip after placing a queen on a line:</p>
 
-    // Remove the queen on the current position
-    placedQueens--;
-    chessboard[position] = false;
-
-    // End of the chessboard check
-    if (position + 1 &lt; chessboard.length) {
-        solve(position + 1);
-    }
-}
-</code></pre>
-
-<p>The complete implementation is in this source file <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/BruteForceNQueensSolverOneDimensionArray.java">BruteForceNQueensSolverOneDimensionArray</a>.</p>
-
-<h3 id="benchmarks:6d48f140073f9b96eac74e4a8cc818ba">Benchmarks</h3>
-
-<p>These benchmarks are done on a <a href="http://ark.intel.com/products/52210/Intel-Core-i5-2500K-Processor-6M-Cache-up-to-3_70-GHz">Core i5 2500K</a>:</p>
-
-<table>
-<thead>
-<tr>
-<th>chessboard size</th>
-<th>execution time</th>
-<th>number of runs</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>4</td>
-<td>67.70 µs</td>
-<td>5000</td>
-</tr>
-
-<tr>
-<td>5</td>
-<td>1.82 ms</td>
-<td>5000</td>
-</tr>
-
-<tr>
-<td>6</td>
-<td>67.17 ms</td>
-<td>500</td>
-</tr>
-
-<tr>
-<td>7</td>
-<td>3.11 s</td>
-<td>50</td>
-</tr>
-
-<tr>
-<td>8</td>
-<td>2.42 m</td>
-<td>5</td>
-</tr>
-
-<tr>
-<td>9</td>
-<td>3h02m</td>
-<td>1</td>
-</tr>
-
-<tr>
-<td>10</td>
-<td>too long&hellip;</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-<p>On 9x9 chessboard, the needed time to count all solutions is very long!</p>
-
-<h2 id="add-grid-constraints:6d48f140073f9b96eac74e4a8cc818ba">Add grid constraints</h2>
-
-<h3 id="explaination-1:6d48f140073f9b96eac74e4a8cc818ba">Explaination</h3>
-
-<p>In the N-queens-puzzle, the number of currently placed queens per column, line and diagonals can stored in arrays variables, when a queen is put on the chessboard theses variables are incremented at the correct offsets and when a queen is removed theses variables must be decremented at the same offsets.</p>
-
-<h3 id="implementation-1:6d48f140073f9b96eac74e4a8cc818ba">Implementation</h3>
-
-<p>This is the previous implementation with 4 new constraints for lines, columns and both diagnonals:</p>
-
-<pre><code class="language-java">/** Chessboard with only one dimension with all lines. */
-private boolean[] chessboard;
+<pre><code class="language-java">/** Chessboard represented by a 2 dimensional array. */
+private boolean[][] chessboard;
 /** Array to count queens on each column. */
 private int[] columnCounts;
-/** Array to count queens on each line. */
-private int[] lineCounts;
 /** Array to count queens on ascending diagonals, diagonal number = x + y. */
 private int[] ascendingDiagonalCounts;
-/** Array to count queens on descending diagonals, diagonal number = x + chessboard size - 1 - y. */
+/** Array to count queens on descending diagonals, diagonal number = x + chess board size - 1 - y. */
 private int[] descendingDiagonalCounts;
 
-private void solve(final int position) {
-
-    // Recalculate X and Y coordinates
-    final int y = position / chessboardSize;
-    final int x = position % chessboardSize;
+/** Current number of placedQueens */
+private int placedQueens;
+    
+private void solve(final int x, final int y) {
 
     // Put a queen on the current position
-    chessboard[position] = true;
-    lineCounts[y]++;
+    chessboard[y][x] = true;
     columnCounts[x]++;
-    final int ascendingDiagonal = x + y;
+    final int ascendingDiagnonal = x + y;
     final int descendingDiagnonal = x + chessboardSize - 1 - y;
-    ascendingDiagonalCounts[ascendingDiagonal]++;
-    descendingDiagonalCounts[descendingDiagonal]++;
+    ascendingDiagonalCounts[ascendingDiagnonal]++;
+    descendingDiagonalCounts[descendingDiagnonal]++;
     placedQueens++;
 
     // All queens are sets then a solution may be present
@@ -236,30 +139,31 @@ private void solve(final int position) {
     }
     else {
 
-        // End of the chessboard check
-        if (position + 1 &lt; chessboard.length) {
-            solve(position + 1);
+        //End of chessboard check
+        if (y + 1 &lt; chessboardSize) {
+            //Go to the next line
+            solve(0, y + 1);
         }
     }
 
-    // Remove the queen on the current position
+    // Remove the placed queen
     placedQueens--;
-    ascendingDiagonalCounts[ascendingDiagonal]--;
-    descendingDiagonalCounts[descendingDiagonal]--;
-    lineCounts[y]--;
+    ascendingDiagonalCounts[ascendingDiagnonal]--;
+    descendingDiagonalCounts[descendingDiagnonal]--;
     columnCounts[x]--;
-    chessboard[position] = false;
+    chessboard[y][x] = false;
 
-    // End of the chessboard check
-    if (position + 1 &lt; chessboard.length) {
-        solve(position + 1);
+    //End of line check
+    if (x + 1 &lt; chessboardSize) {
+        //Go to the next position on the line
+        solve(x + 1, y);
     }
 }
 </code></pre>
 
-<p>The complete implementation is in this source file <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/BruteForceNQueensSolverGridConstraits.java">BruteForceNQueensSolverGridConstraits</a>.</p>
+<p>The complete implementation is in this source file <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/BruteForceNQueensSolverOneQueenPerLine.java">BruteForceNQueensSolverOneQueenPerLine</a>.</p>
 
-<h3 id="benchmarks-1:6d48f140073f9b96eac74e4a8cc818ba">Benchmarks</h3>
+<h3 id="benchmarks:0455adfa2265028898e1e89424046c1a">Benchmarks</h3>
 
 <p>These benchmarks are done on a <a href="http://ark.intel.com/products/52210/Intel-Core-i5-2500K-Processor-6M-Cache-up-to-3_70-GHz">Core i5 2500K</a>:</p>
 
@@ -275,38 +179,38 @@ private void solve(final int position) {
 <tbody>
 <tr>
 <td>4</td>
-<td>55,98 µs</td>
+<td>6.03 µs</td>
 <td>5000</td>
 </tr>
 
 <tr>
 <td>5</td>
-<td>1,75 ms</td>
+<td>61.93 µs</td>
 <td>5000</td>
 </tr>
 
 <tr>
 <td>6</td>
-<td>54,57 ms</td>
+<td>997.29 µs</td>
 <td>500</td>
 </tr>
 
 <tr>
 <td>7</td>
-<td>2,37 s</td>
+<td>22.05 ms</td>
 <td>50</td>
 </tr>
 
 <tr>
 <td>8</td>
-<td>1.54 m</td>
-<td>5</td>
+<td>404.07 ms</td>
+<td>50</td>
 </tr>
 
 <tr>
 <td>9</td>
-<td>2.05 h</td>
-<td>1</td>
+<td>7,41 s</td>
+<td>50</td>
 </tr>
 
 <tr>
@@ -317,11 +221,131 @@ private void solve(final int position) {
 </tbody>
 </table>
 
-<p>On 9x9 chessboard, the needed time to count all solutions is very long!</p>
+<p>On 10x10 chessboard, the needed time to count all solutions is long.</p>
 
-<h2 id="next-optimisations:6d48f140073f9b96eac74e4a8cc818ba">Next optimisations?</h2>
+<h2 id="reduced-recursion:0455adfa2265028898e1e89424046c1a">Reduced recursion</h2>
 
-<p>Next optimisations are tested in the part 4, click on the link below.</p>
+<h3 id="explaination-1:0455adfa2265028898e1e89424046c1a">Explaination</h3>
+
+<p>A single recursive call can be used on each line to test sequentially each possible position. On a N x N chessboard, only N recursive calls are needed to test all possible combinations.</p>
+
+<h3 id="implementation-1:0455adfa2265028898e1e89424046c1a">Implementation</h3>
+
+<p>This is the previous implementation with a <code>for</code> loop to test all possible positions on each line:</p>
+
+<pre><code class="language-java">/** Chessboard represented by a 2 dimensional array. */
+private boolean[][] chessboard;
+/** Array to count queens on each column. */
+private int[] columnCounts;
+/** Array to count queens on ascending diagonals, diagonal number = x + y. */
+private int[] ascendingDiagonalCounts;
+/** Array to count queens on descending diagonals, diagonal number = x + chess board size - 1 - y. */
+private int[] descendingDiagonalCounts;
+
+private void solve(final int y) {
+
+    for (int x = 0; x &lt; chessboardSize; x++) {
+
+        // Put a queen on the current position
+        chessboard[y][x] = true;
+        columnCounts[x]++;
+        final int ascendingDiagnonal = x + y;
+        final int descendingDiagnonal = x + chessboardSize - 1 - y;
+        ascendingDiagonalCounts[ascendingDiagnonal]++;
+        descendingDiagonalCounts[descendingDiagnonal]++;
+
+        // Last line: all queens are sets then a solution may be present
+        if (y + 1 &gt;= chessboardSize) {
+            if (checkSolutionChessboard()) {
+                solutionCount++;
+                print();
+            }
+        }
+        else {
+            // Go to the next line
+            solve(y + 1);
+        }
+
+        // Remove the placed queen
+        ascendingDiagonalCounts[ascendingDiagnonal]--;
+        descendingDiagonalCounts[descendingDiagnonal]--;
+        columnCounts[x]--;
+        chessboard[y][x] = false;
+    }
+}
+</code></pre>
+
+<p>The complete implementation is in this source file <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers/blob/master/src/main/java/com/github/sbugat/nqueens/solvers/bruteforce/BruteForceNQueensSolverReducedRecursion.java">BruteForceNQueensSolverReducedRecursion</a>.</p>
+
+<h3 id="benchmarks-1:0455adfa2265028898e1e89424046c1a">Benchmarks</h3>
+
+<p>These benchmarks are done on a <a href="http://ark.intel.com/products/52210/Intel-Core-i5-2500K-Processor-6M-Cache-up-to-3_70-GHz">Core i5 2500K</a>:</p>
+
+<table>
+<thead>
+<tr>
+<th>chessboard size</th>
+<th>execution time</th>
+<th>number of runs</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>4</td>
+<td>6.48 µs</td>
+<td>5000</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>60.74 µs</td>
+<td>5000</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>850.48 µs</td>
+<td>5000</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>18.08 ms</td>
+<td>500</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>323.31 ms</td>
+<td>50</td>
+</tr>
+
+<tr>
+<td>9</td>
+<td>8.79 s</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>3.32 m</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>11</td>
+<td>too long&hellip;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<p>On 10x10 chessboard, the needed time to count all solutions is long!</p>
+
+<h2 id="next-optimisations:0455adfa2265028898e1e89424046c1a">Next optimisations?</h2>
+
+<p>Other optimisations will be tested in the part 5, stay tuned of go to the <a href="https://github.com/Sylvain-Bugat/N-queens-puzzle-solvers">GitHub project</a> to have some algorithms preview!</p>
 
 
     <span class="post-date">
@@ -329,7 +353,7 @@ private void solve(final int position) {
         <br/>
         
         <a class="label" href="http://sylvain-bugat.github.io//series/8-queens-puzzle">8 queens puzzle series</a>
-        <a class="label" href="http://sylvain-bugat.github.io/blog/2015/05/14/8-queens-puzzle-brute-force-solvers-part-4/">next article</a>
+        
         
     </span>
   </div>

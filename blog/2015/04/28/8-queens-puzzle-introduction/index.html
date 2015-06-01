@@ -10,6 +10,8 @@
   <title>8 queens puzzle introduction &middot; Sylvain Bugat</title>
 
   
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole-overrides.css">
@@ -19,10 +21,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/chessboard/chessboard-0.3.0.css">
-
   
-  <script src="http://sylvain-bugat.github.io//js/jquery/jquery-2.1.3.min.js"></script>
+  
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="http://sylvain-bugat.github.io//js/chessboard/chessboard-0.3.0.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
  
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -87,23 +92,23 @@
 
 <p>The <a href="http://en.wikipedia.org/wiki/Eight_queens_puzzle">8 queens on a chessboard</a> is a classic puzzle which consists of placing 8 queens on a chessboard with only one queen on each row, column and diagonal, you can try it with this chessboard (errors are not visible yet):</p>
 
-<p><div id="board" style="width: 400px"></div>
-<input type="button" id="clearButton" value="Clear chessboard" /></p>
+<div id="board" style="width: 400px"></div>
+
+<p><input type="button" id="clearButton" value="Clear chessboard"></input></p>
 
 <script>
-
-var board = new ChessBoard('board', {
-    draggable: true,
-    dropOffBoard: 'trash',
-    sparePieces: true,
-    showNotation: false
-});
-$('#clearButton').on('click', board.clear);
-
+    var board = new ChessBoard('board', {
+        draggable: true,
+        dropOffBoard: 'trash',
+        sparePieces: true,
+        showNotation: false
+    });
+    $('#clearButton').on('click', board.clear);
 </script>
 
-<p>This base Javascript is from <a href="http://chessboardjs.com/">chessboard.js.com</a> (<a href="https://github.com/oakmac/chessboardjs/">GitHub link</a>) under the <a href="https://github.com/oakmac/chessboardjs/blob/master/LICENSE">MIT license</a>.
-Queen image is from <a href="http://pixabay.com/en/chess-queen-meeple-white-game-36310/">Pixabay</a> under the <a href="http://creativecommons.org/publicdomain/zero/1.0/deed">CC0 Public Domain</a>.</p>
+<p>This Javascript is based on <a href="http://chessboardjs.com/">chessboard.js.com</a> (<a href="https://github.com/oakmac/chessboardjs/">GitHub link</a>) under the <a href="https://github.com/oakmac/chessboardjs/blob/master/LICENSE">MIT license</a>. The modified version of this script can be found <a href="https://github.com/Sylvain-Bugat/blog-sources/blob/master/themes/hyde-x/static/js/chessboard/chessboard-0.3.0.js">here</a>.</p>
+
+<p>Queen image is from <a href="http://pixabay.com/en/chess-queen-meeple-white-game-36310/">Pixabay</a> under the <a href="http://creativecommons.org/publicdomain/zero/1.0/deed">CC0 Public Domain</a>.</p>
 
 <h3 id="extention-to-n-queens:2767292a573dc549b9b4297b701af3ab">Extention to N queens</h3>
 
@@ -258,7 +263,26 @@ Queen image is from <a href="http://pixabay.com/en/chess-queen-meeple-white-game
 
 <p>Source: sequence <a href="http://oeis.org/A000170">A000170</a> on <a href="http://oeis.org/">OEIS</a>.</p>
 
-<p>On a classic chessboard there is 92 distinct solutions.</p>
+<p>On a classic chessboard there is 92 distinct solutionsn and this chessboard is one solution:</p>
+
+<div id="solutionBoard" style="width: 400px"></div>
+
+<script>
+    var positions = {
+        c8: 'wQ',
+        e7: 'wQ',
+        h6: 'wQ',
+        d5: 'wQ',
+        a4: 'wQ',
+        g3: 'wQ',
+        b2: 'wQ',
+        f1: 'wQ'
+    };
+    new ChessBoard('solutionBoard', {
+        position: positions,
+        showNotation: false
+    });
+</script>
 
 <h2 id="resolve-the-puzzle:2767292a573dc549b9b4297b701af3ab">Resolve the puzzle</h2>
 

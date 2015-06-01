@@ -10,6 +10,8 @@
   <title>8 queens puzzle brute-force solvers part 2 &middot; Sylvain Bugat</title>
 
   
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/hyde.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/poole-overrides.css">
@@ -19,10 +21,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://sylvain-bugat.github.io//css/chessboard/chessboard-0.3.0.css">
-
   
-  <script src="http://sylvain-bugat.github.io//js/jquery/jquery-2.1.3.min.js"></script>
+  
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="http://sylvain-bugat.github.io//js/chessboard/chessboard-0.3.0.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
  
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -210,6 +215,72 @@ private void solve(final int x, final int y) {
 
 <p>On 9x9 chessboard, the needed time to count all solutions is very long!</p>
 
+<p>Comparison of read square between this algorithm and the same without the queen constraint:</p>
+
+<table>
+<thead>
+<tr>
+<th>chessboard size</th>
+<th>brute-force</th>
+<th>brute-force with queen constraint</th>
+<th>change</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>5</td>
+<td>4</td>
+<td>-20%</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>86</td>
+<td>46</td>
+<td>-46%</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>1,955</td>
+<td>794</td>
+<td>-59%</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>60,780</td>
+<td>20,524</td>
+<td>-66%</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>2,434,873</td>
+<td>724,748</td>
+<td>-70%</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>117,983,963</td>
+<td>31,890,143</td>
+<td>-72%</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>6,659,907,867</td>
+<td>1,660,790,226</td>
+<td>-75%</td>
+</tr>
+</tbody>
+</table>
+
+<p>The number of read square is lower with the queen constraint because the chessboard don&rsquo;t need to be read to check the number of placed queens.</p>
+
 <h2 id="use-a-two-dimensional-array-for-the-chessboard:dbc45b4a636ebe887a66e72818a0ca96">Use a two-dimensional array for the chessboard</h2>
 
 <h3 id="explaination-1:dbc45b4a636ebe887a66e72818a0ca96">Explaination</h3>
@@ -231,7 +302,7 @@ private void solve(final int x, final int y) {
     chessboard[x][y] = true;
     placedQueens++;
 
-    // All queens are sets on the chessboard then a solution may be present
+    // All queens on the chessboard then a solution may be present
     if (placedQueens &gt;= chessboardSize) {
         if (checkSolutionChessboard()) {
             solutionCount++;

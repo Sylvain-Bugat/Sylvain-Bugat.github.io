@@ -30,7 +30,14 @@
 &lt;script&gt;
 
 var position = {
-  a8: &#39;wQ&#39;
+  a8: &#39;wQ&#39;,
+  b8: &#39;rQ&#39;,
+  c8: &#39;rQ&#39;,
+  d8: &#39;rQ&#39;,
+  e8: &#39;rQ&#39;,
+  f8: &#39;rQ&#39;,
+  g8: &#39;rQ&#39;,
+  h8: &#39;rQ&#39;
 };
 var board = new ChessBoard(&#39;board&#39;, {
     position: position,
@@ -674,6 +681,72 @@ private void solve(final int x, final int y) {
 
 &lt;p&gt;On 9x9 chessboard, the needed time to count all solutions is very long!&lt;/p&gt;
 
+&lt;p&gt;Comparison of read square between this algorithm and the same without the queen constraint:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;chessboard size&lt;/th&gt;
+&lt;th&gt;brute-force&lt;/th&gt;
+&lt;th&gt;brute-force with queen constraint&lt;/th&gt;
+&lt;th&gt;change&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;-20%&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;86&lt;/td&gt;
+&lt;td&gt;46&lt;/td&gt;
+&lt;td&gt;-46%&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;1,955&lt;/td&gt;
+&lt;td&gt;794&lt;/td&gt;
+&lt;td&gt;-59%&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;60,780&lt;/td&gt;
+&lt;td&gt;20,524&lt;/td&gt;
+&lt;td&gt;-66%&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;2,434,873&lt;/td&gt;
+&lt;td&gt;724,748&lt;/td&gt;
+&lt;td&gt;-70%&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;6&lt;/td&gt;
+&lt;td&gt;117,983,963&lt;/td&gt;
+&lt;td&gt;31,890,143&lt;/td&gt;
+&lt;td&gt;-72%&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;6,659,907,867&lt;/td&gt;
+&lt;td&gt;1,660,790,226&lt;/td&gt;
+&lt;td&gt;-75%&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The number of read square is lower with the queen constraint because the chessboard don&amp;rsquo;t need to be read to check the number of placed queens.&lt;/p&gt;
+
 &lt;h2 id=&#34;use-a-two-dimensional-array-for-the-chessboard:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Use a two-dimensional array for the chessboard&lt;/h2&gt;
 
 &lt;h3 id=&#34;explaination-1:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Explaination&lt;/h3&gt;
@@ -695,7 +768,7 @@ private void solve(final int x, final int y) {
     chessboard[x][y] = true;
     placedQueens++;
 
-    // All queens are sets on the chessboard then a solution may be present
+    // All queens on the chessboard then a solution may be present
     if (placedQueens &amp;gt;= chessboardSize) {
         if (checkSolutionChessboard()) {
             solutionCount++;
@@ -1003,7 +1076,7 @@ private void solve(final int x, final int y) {
     // Put a queen on the current position
     chessboard.get(x).set(y, Boolean.TRUE);
 
-    // All queens are sets on the chessboard then a solution may be present
+    // All queens are sets then a solution may be present
     if (getPlacedQueens() &amp;gt;= chessboardSize) {
         if (checkSolutionChessboard()) {
             solutionCount++;
@@ -1096,6 +1169,188 @@ private void solve(final int x, final int y) {
 &lt;/table&gt;
 
 &lt;p&gt;On 8x8 chessboard, the time needed to count all solutions is quite long!&lt;/p&gt;
+
+&lt;h2 id=&#34;algorithms-comparisons:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Algorithms comparisons&lt;/h2&gt;
+
+&lt;p&gt;Comparison of theses 2 algorithms:&lt;/p&gt;
+
+&lt;div class=&#34;panel panel-default tab-box&#34;&gt;
+    &lt;div class=&#34;panel-heading&#34;&gt;
+        &lt;h3 class=&#34;panel-title&#34;&gt;
+            &lt;i class=&#34;fa fa-signal&#34;&gt;&lt;/i&gt;Algorithms comparison
+        &lt;/h3&gt;
+        &lt;ul class=&#34;nav nav-tabs&#34;&gt;
+            &lt;li class=&#34;active&#34;&gt;
+                &lt;a href=&#34;#queenPlacementsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;queenPlacementsGraph&#34;&gt;moves&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#methodCallsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;methodCallsGraph&#34;&gt;method calls&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#squareReadsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;squareReadsGraph&#34;&gt;reads&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#explicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;explicitTestsGraph&#34;&gt;tests&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#implicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;implicitTestsGraph&#34;&gt;loop tests&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;panel-body&#34;&gt;
+        &lt;div class=&#34;tab-content&#34;&gt;
+            &lt;div id=&#34;queenPlacementsTab&#34; class=&#34;tab-pane active&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Queen placements count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;queenPlacements&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Uber brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;List brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;methodCallsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Method calls count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;methodCalls&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Uber brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;List brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;squareReadsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Square reads count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;squareReads&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Uber brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;List brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;explicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Explicit tests count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;explicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Uber brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;List brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;implicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Loop tests count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;implicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Uber brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;List brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+
+$(&#39;ul.nav a&#39;).on(&#39;shown.bs.tab&#39;, function (e) {
+    var types = $(this).attr(&#34;data-identifier&#34;);
+    var typesArray = types.split(&#34;,&#34;);
+    $.each(typesArray, function (key, value) {
+        eval(value + &#34;.redraw()&#34;);
+        eval(value + &#34;.resizeHandler()&#34;);
+    })
+});
+
+//Data
+var data = [
+    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 1,  &#34;solver1methodCalls&#34;: 22,  &#34;solver1squareReads&#34;: 5,  &#34;solver1explicitTests&#34;: 16,  &#34;solver1implicitTests&#34;: 20,  &#34;solver2queenPlacements&#34;: 1,  &#34;solver2methodCalls&#34;: 23,  &#34;solver2squareReads&#34;: 5,  &#34;solver2explicitTests&#34;: 17,  &#34;solver2implicitTests&#34;: 21},
+    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 15,  &#34;solver1methodCalls&#34;: 408,  &#34;solver1squareReads&#34;: 106,  &#34;solver1explicitTests&#34;: 225,  &#34;solver1implicitTests&#34;: 236,  &#34;solver2queenPlacements&#34;: 10,  &#34;solver2methodCalls&#34;: 324,  &#34;solver2squareReads&#34;: 86,  &#34;solver2explicitTests&#34;: 175,  &#34;solver2implicitTests&#34;: 200},
+    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 511,  &#34;solver1methodCalls&#34;: 19245,  &#34;solver1squareReads&#34;: 5393,  &#34;solver1explicitTests&#34;: 8277,  &#34;solver1implicitTests&#34;: 9534,  &#34;solver2queenPlacements&#34;: 129,  &#34;solver2methodCalls&#34;: 6723,  &#34;solver2squareReads&#34;: 1955,  &#34;solver2explicitTests&#34;: 2895,  &#34;solver2implicitTests&#34;: 3560},
+    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 65531,  &#34;solver1methodCalls&#34;: 3600248,  &#34;solver1squareReads&#34;: 1069020,  &#34;solver1explicitTests&#34;: 1402825,  &#34;solver1implicitTests&#34;: 1668602,  &#34;solver2queenPlacements&#34;: 2516,  &#34;solver2methodCalls&#34;: 199258,  &#34;solver2squareReads&#34;: 60780,  &#34;solver2explicitTests&#34;: 76617,  &#34;solver2implicitTests&#34;: 96417},
+    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 33554379,  &#34;solver1methodCalls&#34;: 2720078953,  &#34;solver1squareReads&#34;: 839584223,  &#34;solver1explicitTests&#34;: 1008454787,  &#34;solver1implicitTests&#34;: 1208950192,  &#34;solver2queenPlacements&#34;: 68405,  &#34;solver2methodCalls&#34;: 7768189,  &#34;solver2squareReads&#34;: 2434873,  &#34;solver2explicitTests&#34;: 2846091,  &#34;solver2implicitTests&#34;: 3553763}
+    ];
+var queenPlacementsGraph = Morris.Line({
+    element: &#39;queenPlacements&#39;,
+    hideHover: &#39;auto&#39;,
+    data: data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1queenPlacements&#39;, &#39;solver2queenPlacements&#39;],
+    labels: [&#39;Uber brute-force&#39;, &#39;List brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var methodCallsGraph = Morris.Line({
+    element: &#39;methodCalls&#39;,
+    hideHover: &#39;auto&#39;,
+    data: data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1methodCalls&#39;, &#39;solver2methodCalls&#39;],
+    labels: [&#39;Uber brute-force&#39;, &#39;List brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var squareReadsGraph = Morris.Line({
+    element: &#39;squareReads&#39;,
+    hideHover: &#39;auto&#39;,
+    data: data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1squareReads&#39;, &#39;solver2squareReads&#39;],
+    labels: [&#39;Uber brute-force&#39;, &#39;List brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var explicitTestsGraph = Morris.Line({
+    element: &#39;explicitTests&#39;,
+    hideHover: &#39;auto&#39;,
+    data: data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1explicitTests&#39;, &#39;solver2explicitTests&#39;],
+    labels: [&#39;Uber brute-force&#39;, &#39;List brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var implicitTestsGraph = Morris.Line({
+    element: &#39;implicitTests&#39;,
+    hideHover: &#39;auto&#39;,
+    data: data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1implicitTests&#39;, &#39;solver2implicitTests&#39;],
+    labels: [&#39;Uber brute-force&#39;, &#39;List brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+
+&lt;/script&gt;
+
+&lt;p&gt;All benchmarked operations with the uber-brute-force algorithm became huge very quickly and the speed up of only placing a maximum of N queens on a NxN chessboard is amazing!&lt;/p&gt;
 
 &lt;h2 id=&#34;next-optimisations:02e494252b7a2aa6ccffd65c467a0932&#34;&gt;Next optimisations?&lt;/h2&gt;
 

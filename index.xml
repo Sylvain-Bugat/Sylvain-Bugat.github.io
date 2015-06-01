@@ -681,69 +681,188 @@ private void solve(final int x, final int y) {
 
 &lt;p&gt;On 9x9 chessboard, the needed time to count all solutions is very long!&lt;/p&gt;
 
-&lt;p&gt;Comparison of read square between this algorithm and the same without the queen constraint:&lt;/p&gt;
+&lt;h2 id=&#34;algorithms-comparisons:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Algorithms comparisons&lt;/h2&gt;
 
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;chessboard size&lt;/th&gt;
-&lt;th&gt;brute-force&lt;/th&gt;
-&lt;th&gt;brute-force with queen constraint&lt;/th&gt;
-&lt;th&gt;change&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
+&lt;p&gt;Comparison of the previous and this algorithm:&lt;/p&gt;
 
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;-20%&lt;/td&gt;
-&lt;/tr&gt;
+&lt;div class=&#34;panel panel-default tab-box&#34;&gt;
+    &lt;div class=&#34;panel-heading&#34;&gt;
+        &lt;h3 class=&#34;panel-title&#34;&gt;
+            &lt;i class=&#34;fa fa-signal&#34;&gt;&lt;/i&gt;Algorithms comparison
+        &lt;/h3&gt;
+        &lt;ul class=&#34;nav nav-tabs&#34;&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix1queenPlacementsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1queenPlacementsGraph&#34;&gt;moves&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;active&#34;&gt;
+                &lt;a href=&#34;#prefix1methodCallsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1methodCallsGraph&#34;&gt;method calls&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix1squareReadsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1squareReadsGraph&#34;&gt;reads&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix1explicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1explicitTestsGraph&#34;&gt;tests&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix1implicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1implicitTestsGraph&#34;&gt;loop tests&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;panel-body&#34;&gt;
+        &lt;div class=&#34;tab-content&#34;&gt;
+            &lt;div id=&#34;prefix1queenPlacementsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Queen placements count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix1queenPlacements&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix1methodCallsTab&#34; class=&#34;tab-pane active&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Method calls count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix1methodCalls&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix1squareReadsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Square reads count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix1squareReads&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix1explicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Explicit tests count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix1explicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix1implicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Loop tests count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix1implicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
-&lt;tr&gt;
-&lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;86&lt;/td&gt;
-&lt;td&gt;46&lt;/td&gt;
-&lt;td&gt;-46%&lt;/td&gt;
-&lt;/tr&gt;
+&lt;script&gt;
 
-&lt;tr&gt;
-&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;1,955&lt;/td&gt;
-&lt;td&gt;794&lt;/td&gt;
-&lt;td&gt;-59%&lt;/td&gt;
-&lt;/tr&gt;
+$(&#39;ul.nav a&#39;).on(&#39;shown.bs.tab&#39;, function (e) {
+    var types = $(this).attr(&#34;data-identifier&#34;);
+    var typesArray = types.split(&#34;,&#34;);
+    $.each(typesArray, function (key, value) {
+        eval(value + &#34;.redraw()&#34;);
+        eval(value + &#34;.resizeHandler()&#34;);
+    })
+});
 
-&lt;tr&gt;
-&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;60,780&lt;/td&gt;
-&lt;td&gt;20,524&lt;/td&gt;
-&lt;td&gt;-66%&lt;/td&gt;
-&lt;/tr&gt;
+//Data
+var prefix1data = [
+    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 1,  &#34;solver1methodCalls&#34;: 23,  &#34;solver1squareReads&#34;: 5,  &#34;solver1explicitTests&#34;: 17,  &#34;solver1implicitTests&#34;: 21,  &#34;solver2queenPlacements&#34;: 1,  &#34;solver2methodCalls&#34;: 19,  &#34;solver2squareReads&#34;: 4,  &#34;solver2explicitTests&#34;: 16,  &#34;solver2implicitTests&#34;: 17},
+    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 10,  &#34;solver1methodCalls&#34;: 324,  &#34;solver1squareReads&#34;: 86,  &#34;solver1explicitTests&#34;: 175,  &#34;solver1implicitTests&#34;: 200,  &#34;solver2queenPlacements&#34;: 10,  &#34;solver2methodCalls&#34;: 194,  &#34;solver2squareReads&#34;: 46,  &#34;solver2explicitTests&#34;: 135,  &#34;solver2implicitTests&#34;: 110},
+    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 129,  &#34;solver1methodCalls&#34;: 6723,  &#34;solver1squareReads&#34;: 1955,  &#34;solver1explicitTests&#34;: 2895,  &#34;solver1implicitTests&#34;: 3560,  &#34;solver2queenPlacements&#34;: 129,  &#34;solver2methodCalls&#34;: 3111,  &#34;solver2squareReads&#34;: 794,  &#34;solver2explicitTests&#34;: 1734,  &#34;solver2implicitTests&#34;: 1496},
+    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 2516,  &#34;solver1methodCalls&#34;: 199258,  &#34;solver1squareReads&#34;: 60780,  &#34;solver1explicitTests&#34;: 76617,  &#34;solver1implicitTests&#34;: 96417,  &#34;solver2queenPlacements&#34;: 2516,  &#34;solver2methodCalls&#34;: 75974,  &#34;solver2squareReads&#34;: 20524,  &#34;solver2explicitTests&#34;: 36361,  &#34;solver2implicitTests&#34;: 33517},
+    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 68405,  &#34;solver1methodCalls&#34;: 7768189,  &#34;solver1squareReads&#34;: 2434873,  &#34;solver1explicitTests&#34;: 2846091,  &#34;solver1implicitTests&#34;: 3553763,  &#34;solver2queenPlacements&#34;: 68405,  &#34;solver2methodCalls&#34;: 2569409,  &#34;solver2squareReads&#34;: 724748,  &#34;solver2explicitTests&#34;: 1135966,  &#34;solver2implicitTests&#34;: 1091183},
+    {&#34;size&#34;: &#34;6&#34;, &#34;solver1queenPlacements&#34;: 2391495,  &#34;solver1methodCalls&#34;: 370248655,  &#34;solver1squareReads&#34;: 117983963,  &#34;solver1explicitTests&#34;: 132265835,  &#34;solver1implicitTests&#34;: 162657186,  &#34;solver2queenPlacements&#34;: 2391495,  &#34;solver2methodCalls&#34;: 109575700,  &#34;solver2squareReads&#34;: 31890143,  &#34;solver2explicitTests&#34;: 46172015,  &#34;solver2implicitTests&#34;: 45473931},
+    {&#34;size&#34;: &#34;7&#34;, &#34;solver1queenPlacements&#34;: 102022809,  &#34;solver1methodCalls&#34;: 20677761079,  &#34;solver1squareReads&#34;: 6659907867,  &#34;solver1explicitTests&#34;: 7271931036,  &#34;solver1implicitTests&#34;: 8803458227,  &#34;solver2queenPlacements&#34;: 102022809,  &#34;solver2methodCalls&#34;: 5578385347,  &#34;solver2squareReads&#34;: 1660790226,  &#34;solver2explicitTests&#34;: 2272813395,  &#34;solver2implicitTests&#34;: 2273998451},
+    {&#34;size&#34;: &#34;8&#34;, &#34;solver1queenPlacements&#34;: 5130659560,  &#34;solver1methodCalls&#34;: 1318173704582,  &#34;solver1squareReads&#34;: 427654527254,  &#34;solver1explicitTests&#34;: 458618310305,  &#34;solver1implicitTests&#34;: 547241304569,  &#34;solver2queenPlacements&#34;: 5130659560,  &#34;solver2methodCalls&#34;: 327956409502,  &#34;solver2squareReads&#34;: 99292315414,  &#34;solver2explicitTests&#34;: 130256098465,  &#34;solver2implicitTests&#34;: 131657880209}
+    ];
+var prefix1queenPlacementsGraph = Morris.Line({
+    element: &#39;prefix1queenPlacements&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix1data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1queenPlacements&#39;, &#39;solver2queenPlacements&#39;],
+    labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix1methodCallsGraph = Morris.Line({
+    element: &#39;prefix1methodCalls&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix1data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1methodCalls&#39;, &#39;solver2methodCalls&#39;],
+    labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix1squareReadsGraph = Morris.Line({
+    element: &#39;prefix1squareReads&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix1data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1squareReads&#39;, &#39;solver2squareReads&#39;],
+    labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix1explicitTestsGraph = Morris.Line({
+    element: &#39;prefix1explicitTests&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix1data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1explicitTests&#39;, &#39;solver2explicitTests&#39;],
+    labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix1implicitTestsGraph = Morris.Line({
+    element: &#39;prefix1implicitTests&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix1data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1implicitTests&#39;, &#39;solver2implicitTests&#39;],
+    labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
 
-&lt;tr&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;2,434,873&lt;/td&gt;
-&lt;td&gt;724,748&lt;/td&gt;
-&lt;td&gt;-70%&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;117,983,963&lt;/td&gt;
-&lt;td&gt;31,890,143&lt;/td&gt;
-&lt;td&gt;-72%&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;7&lt;/td&gt;
-&lt;td&gt;6,659,907,867&lt;/td&gt;
-&lt;td&gt;1,660,790,226&lt;/td&gt;
-&lt;td&gt;-75%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;/script&gt;
 
 &lt;p&gt;The number of read square is lower with the queen constraint because the chessboard don&amp;rsquo;t need to be read to check the number of placed queens.&lt;/p&gt;
 
@@ -864,6 +983,190 @@ private void solve(final int x, final int y) {
 &lt;/table&gt;
 
 &lt;p&gt;On 8x8 chessboard, the needed time to count all solutions is long!&lt;/p&gt;
+
+&lt;h2 id=&#34;algorithms-comparisons-1:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Algorithms comparisons&lt;/h2&gt;
+
+&lt;p&gt;Comparison of theses 2 algorithms:&lt;/p&gt;
+
+&lt;div class=&#34;panel panel-default tab-box&#34;&gt;
+    &lt;div class=&#34;panel-heading&#34;&gt;
+        &lt;h3 class=&#34;panel-title&#34;&gt;
+            &lt;i class=&#34;fa fa-signal&#34;&gt;&lt;/i&gt;Algorithms comparison
+        &lt;/h3&gt;
+        &lt;ul class=&#34;nav nav-tabs&#34;&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix2queenPlacementsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix2queenPlacementsGraph&#34;&gt;moves&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&#34;active&#34;&gt;
+                &lt;a href=&#34;#prefix2methodCallsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix2methodCallsGraph&#34;&gt;method calls&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix2squareReadsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix2squareReadsGraph&#34;&gt;reads&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix2explicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix2explicitTestsGraph&#34;&gt;tests&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&#34;#prefix2implicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix2implicitTestsGraph&#34;&gt;loop tests&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;panel-body&#34;&gt;
+        &lt;div class=&#34;tab-content&#34;&gt;
+            &lt;div id=&#34;prefix2queenPlacementsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Queen placements count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix2queenPlacements&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Array brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix2methodCallsTab&#34; class=&#34;tab-pane active&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Method calls count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix2methodCalls&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Array brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix2squareReadsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Square reads count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix2squareReads&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Array brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix2explicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Explicit tests count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix2explicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Array brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id=&#34;prefix2implicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+                &lt;div class=&#34;row&#34;&gt;
+                    &lt;div class=&#34;caption&#34;&gt;
+                        Loop tests count
+                    &lt;/div&gt;
+                    &lt;div id=&#34;prefix2implicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;legend&#34;&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
+                        &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Array brute-force&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+
+$(&#39;ul.nav a&#39;).on(&#39;shown.bs.tab&#39;, function (e) {
+    var types = $(this).attr(&#34;data-identifier&#34;);
+    var typesArray = types.split(&#34;,&#34;);
+    $.each(typesArray, function (key, value) {
+        eval(value + &#34;.redraw()&#34;);
+        eval(value + &#34;.resizeHandler()&#34;);
+    })
+});
+
+//Data
+var prefix2data = [
+    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 1,  &#34;solver1methodCalls&#34;: 19,  &#34;solver1squareReads&#34;: 4,  &#34;solver1explicitTests&#34;: 16,  &#34;solver1implicitTests&#34;: 17,  &#34;solver2queenPlacements&#34;: 1,  &#34;solver2methodCalls&#34;: 3,  &#34;solver2squareReads&#34;: 4,  &#34;solver2explicitTests&#34;: 16,  &#34;solver2implicitTests&#34;: 17},
+    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 10,  &#34;solver1methodCalls&#34;: 194,  &#34;solver1squareReads&#34;: 46,  &#34;solver1explicitTests&#34;: 135,  &#34;solver1implicitTests&#34;: 110,  &#34;solver2queenPlacements&#34;: 10,  &#34;solver2methodCalls&#34;: 16,  &#34;solver2squareReads&#34;: 46,  &#34;solver2explicitTests&#34;: 135,  &#34;solver2implicitTests&#34;: 110},
+    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 129,  &#34;solver1methodCalls&#34;: 3111,  &#34;solver1squareReads&#34;: 794,  &#34;solver1explicitTests&#34;: 1734,  &#34;solver1implicitTests&#34;: 1496,  &#34;solver2queenPlacements&#34;: 129,  &#34;solver2methodCalls&#34;: 213,  &#34;solver2squareReads&#34;: 794,  &#34;solver2explicitTests&#34;: 1734,  &#34;solver2implicitTests&#34;: 1496},
+    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 2516,  &#34;solver1methodCalls&#34;: 75974,  &#34;solver1squareReads&#34;: 20524,  &#34;solver1explicitTests&#34;: 36361,  &#34;solver1implicitTests&#34;: 33517,  &#34;solver2queenPlacements&#34;: 2516,  &#34;solver2methodCalls&#34;: 4338,  &#34;solver2squareReads&#34;: 20524,  &#34;solver2explicitTests&#34;: 36361,  &#34;solver2implicitTests&#34;: 33517},
+    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 68405,  &#34;solver1methodCalls&#34;: 2569409,  &#34;solver1squareReads&#34;: 724748,  &#34;solver1explicitTests&#34;: 1135966,  &#34;solver1implicitTests&#34;: 1091183,  &#34;solver2queenPlacements&#34;: 68405,  &#34;solver2methodCalls&#34;: 121545,  &#34;solver2squareReads&#34;: 724748,  &#34;solver2explicitTests&#34;: 1135966,  &#34;solver2implicitTests&#34;: 1091183},
+    {&#34;size&#34;: &#34;6&#34;, &#34;solver1queenPlacements&#34;: 2391495,  &#34;solver1methodCalls&#34;: 109575700,  &#34;solver1squareReads&#34;: 31890143,  &#34;solver1explicitTests&#34;: 46172015,  &#34;solver1implicitTests&#34;: 45473931,  &#34;solver2queenPlacements&#34;: 2391495,  &#34;solver2methodCalls&#34;: 4339291,  &#34;solver2squareReads&#34;: 31890143,  &#34;solver2explicitTests&#34;: 46172015,  &#34;solver2implicitTests&#34;: 45473931},
+    {&#34;size&#34;: &#34;7&#34;, &#34;solver1queenPlacements&#34;: 102022809,  &#34;solver1methodCalls&#34;: 5578385347,  &#34;solver1squareReads&#34;: 1660790226,  &#34;solver1explicitTests&#34;: 2272813395,  &#34;solver1implicitTests&#34;: 2273998451,  &#34;solver2queenPlacements&#34;: 102022809,  &#34;solver2methodCalls&#34;: 187923433,  &#34;solver2squareReads&#34;: 1660790226,  &#34;solver2explicitTests&#34;: 2272813395,  &#34;solver2implicitTests&#34;: 2273998451}
+    ];
+var prefix2queenPlacementsGraph = Morris.Line({
+    element: &#39;prefix2queenPlacements&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix2data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1queenPlacements&#39;, &#39;solver2queenPlacements&#39;],
+    labels: [&#39;Queen constraint brute-force&#39;, &#39;Array brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix2methodCallsGraph = Morris.Line({
+    element: &#39;prefix2methodCalls&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix2data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1methodCalls&#39;, &#39;solver2methodCalls&#39;],
+    labels: [&#39;Queen constraint brute-force&#39;, &#39;Array brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix2squareReadsGraph = Morris.Line({
+    element: &#39;prefix2squareReads&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix2data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1squareReads&#39;, &#39;solver2squareReads&#39;],
+    labels: [&#39;Queen constraint brute-force&#39;, &#39;Array brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix2explicitTestsGraph = Morris.Line({
+    element: &#39;prefix2explicitTests&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix2data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1explicitTests&#39;, &#39;solver2explicitTests&#39;],
+    labels: [&#39;Queen constraint brute-force&#39;, &#39;Array brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+var prefix2implicitTestsGraph = Morris.Line({
+    element: &#39;prefix2implicitTests&#39;,
+    hideHover: &#39;auto&#39;,
+    data: prefix2data,
+    xkey: &#39;size&#39;,
+    ykeys: [&#39;solver1implicitTests&#39;, &#39;solver2implicitTests&#39;],
+    labels: [&#39;Queen constraint brute-force&#39;, &#39;Array brute-force&#39;],
+    resize: true,
+    parseTime: false,
+    lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
+    yLabelFormat: function(y) { return y.toLocaleString(); },
+    xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
+});
+
+&lt;/script&gt;
+
+&lt;p&gt;The number of called methods is much lower when using an array because square reads and writes don&amp;rsquo;t need method calls anymore.&lt;/p&gt;
 
 &lt;h2 id=&#34;next-optimisations:dbc45b4a636ebe887a66e72818a0ca96&#34;&gt;Next optimisations?&lt;/h2&gt;
 

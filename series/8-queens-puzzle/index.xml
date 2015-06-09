@@ -688,82 +688,82 @@ private void solve(final int x, final int y) {
 &lt;div class=&#34;panel panel-default tab-box&#34;&gt;
     &lt;div class=&#34;panel-heading&#34;&gt;
         &lt;h3 class=&#34;panel-title&#34;&gt;
-            &lt;i class=&#34;fa fa-signal&#34;&gt;&lt;/i&gt;Algorithms comparison
+            &lt;i class=&#34;glyphicon glyphicon-stats&#34;&gt;&lt;/i&gt;Algorithms comparison
         &lt;/h3&gt;
         &lt;ul class=&#34;nav nav-tabs&#34;&gt;
             &lt;li&gt;
-                &lt;a href=&#34;#prefix1queenPlacementsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1queenPlacementsGraph&#34;&gt;moves&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li class=&#34;active&#34;&gt;
-                &lt;a href=&#34;#prefix1methodCallsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1methodCallsGraph&#34;&gt;method calls&lt;/a&gt;
+                &lt;a href=&#34;#prefixqueenPlacementsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefixqueenPlacementsGraph&#34;&gt;moves&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&#34;#prefix1squareReadsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1squareReadsGraph&#34;&gt;reads&lt;/a&gt;
+                &lt;a href=&#34;#prefixmethodCallsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefixmethodCallsGraph&#34;&gt;method calls&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li  class=&#34;active&#34;&gt;
+                &lt;a href=&#34;#prefixsquareReadsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefixsquareReadsGraph&#34;&gt;reads&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&#34;#prefix1explicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1explicitTestsGraph&#34;&gt;tests&lt;/a&gt;
+                &lt;a href=&#34;#prefixexplicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefixexplicitTestsGraph&#34;&gt;tests&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&#34;#prefix1implicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefix1implicitTestsGraph&#34;&gt;loop tests&lt;/a&gt;
+                &lt;a href=&#34;#prefiximplicitTestsTab&#34; data-toggle=&#34;tab&#34; data-identifier=&#34;prefiximplicitTestsGraph&#34;&gt;loop tests&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/div&gt;
     &lt;div class=&#34;panel-body&#34;&gt;
         &lt;div class=&#34;tab-content&#34;&gt;
-            &lt;div id=&#34;prefix1queenPlacementsTab&#34; class=&#34;tab-pane&#34;&gt;
+            &lt;div id=&#34;prefixqueenPlacementsTab&#34; class=&#34;tab-pane&#34;&gt;
                 &lt;div class=&#34;row&#34;&gt;
                     &lt;div class=&#34;caption&#34;&gt;
                         Queen placements count
                     &lt;/div&gt;
-                    &lt;div id=&#34;prefix1queenPlacements&#34;&gt;&lt;/div&gt;
+                    &lt;div id=&#34;prefixqueenPlacements&#34;&gt;&lt;/div&gt;
                     &lt;div class=&#34;legend&#34;&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div id=&#34;prefix1methodCallsTab&#34; class=&#34;tab-pane active&#34;&gt;
+            &lt;div id=&#34;prefixmethodCallsTab&#34; class=&#34;tab-pane&#34;&gt;
                 &lt;div class=&#34;row&#34;&gt;
                     &lt;div class=&#34;caption&#34;&gt;
                         Method calls count
                     &lt;/div&gt;
-                    &lt;div id=&#34;prefix1methodCalls&#34;&gt;&lt;/div&gt;
+                    &lt;div id=&#34;prefixmethodCalls&#34;&gt;&lt;/div&gt;
                     &lt;div class=&#34;legend&#34;&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div id=&#34;prefix1squareReadsTab&#34; class=&#34;tab-pane&#34;&gt;
+            &lt;div id=&#34;prefixsquareReadsTab&#34; class=&#34;tab-pane active&#34;&gt;
                 &lt;div class=&#34;row&#34;&gt;
                     &lt;div class=&#34;caption&#34;&gt;
                         Square reads count
                     &lt;/div&gt;
-                    &lt;div id=&#34;prefix1squareReads&#34;&gt;&lt;/div&gt;
+                    &lt;div id=&#34;prefixsquareReads&#34;&gt;&lt;/div&gt;
                     &lt;div class=&#34;legend&#34;&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div id=&#34;prefix1explicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+            &lt;div id=&#34;prefixexplicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
                 &lt;div class=&#34;row&#34;&gt;
                     &lt;div class=&#34;caption&#34;&gt;
                         Explicit tests count
                     &lt;/div&gt;
-                    &lt;div id=&#34;prefix1explicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div id=&#34;prefixexplicitTests&#34;&gt;&lt;/div&gt;
                     &lt;div class=&#34;legend&#34;&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
                     &lt;/div&gt;
                 &lt;/div&gt;
             &lt;/div&gt;
-            &lt;div id=&#34;prefix1implicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
+            &lt;div id=&#34;prefiximplicitTestsTab&#34; class=&#34;tab-pane&#34;&gt;
                 &lt;div class=&#34;row&#34;&gt;
                     &lt;div class=&#34;caption&#34;&gt;
                         Loop tests count
                     &lt;/div&gt;
-                    &lt;div id=&#34;prefix1implicitTests&#34;&gt;&lt;/div&gt;
+                    &lt;div id=&#34;prefiximplicitTests&#34;&gt;&lt;/div&gt;
                     &lt;div class=&#34;legend&#34;&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #A52A2A;&#34;&gt;List brute-force&lt;/span&gt;
                         &lt;span class=&#34;label&#34; style=&#34;background-color: #72A0C1;&#34;&gt;Queen constraint brute-force&lt;/span&gt;
@@ -786,79 +786,81 @@ $(&#39;ul.nav a&#39;).on(&#39;shown.bs.tab&#39;, function (e) {
 });
 
 //Data
-var prefix1data = [
-    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 1,  &#34;solver1methodCalls&#34;: 23,  &#34;solver1squareReads&#34;: 5,  &#34;solver1explicitTests&#34;: 17,  &#34;solver1implicitTests&#34;: 21,  &#34;solver2queenPlacements&#34;: 1,  &#34;solver2methodCalls&#34;: 19,  &#34;solver2squareReads&#34;: 4,  &#34;solver2explicitTests&#34;: 16,  &#34;solver2implicitTests&#34;: 17},
-    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 10,  &#34;solver1methodCalls&#34;: 324,  &#34;solver1squareReads&#34;: 86,  &#34;solver1explicitTests&#34;: 175,  &#34;solver1implicitTests&#34;: 200,  &#34;solver2queenPlacements&#34;: 10,  &#34;solver2methodCalls&#34;: 194,  &#34;solver2squareReads&#34;: 46,  &#34;solver2explicitTests&#34;: 135,  &#34;solver2implicitTests&#34;: 110},
-    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 129,  &#34;solver1methodCalls&#34;: 6723,  &#34;solver1squareReads&#34;: 1955,  &#34;solver1explicitTests&#34;: 2895,  &#34;solver1implicitTests&#34;: 3560,  &#34;solver2queenPlacements&#34;: 129,  &#34;solver2methodCalls&#34;: 3111,  &#34;solver2squareReads&#34;: 794,  &#34;solver2explicitTests&#34;: 1734,  &#34;solver2implicitTests&#34;: 1496},
-    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 2516,  &#34;solver1methodCalls&#34;: 199258,  &#34;solver1squareReads&#34;: 60780,  &#34;solver1explicitTests&#34;: 76617,  &#34;solver1implicitTests&#34;: 96417,  &#34;solver2queenPlacements&#34;: 2516,  &#34;solver2methodCalls&#34;: 75974,  &#34;solver2squareReads&#34;: 20524,  &#34;solver2explicitTests&#34;: 36361,  &#34;solver2implicitTests&#34;: 33517},
-    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 68405,  &#34;solver1methodCalls&#34;: 7768189,  &#34;solver1squareReads&#34;: 2434873,  &#34;solver1explicitTests&#34;: 2846091,  &#34;solver1implicitTests&#34;: 3553763,  &#34;solver2queenPlacements&#34;: 68405,  &#34;solver2methodCalls&#34;: 2569409,  &#34;solver2squareReads&#34;: 724748,  &#34;solver2explicitTests&#34;: 1135966,  &#34;solver2implicitTests&#34;: 1091183},
-    {&#34;size&#34;: &#34;6&#34;, &#34;solver1queenPlacements&#34;: 2391495,  &#34;solver1methodCalls&#34;: 370248655,  &#34;solver1squareReads&#34;: 117983963,  &#34;solver1explicitTests&#34;: 132265835,  &#34;solver1implicitTests&#34;: 162657186,  &#34;solver2queenPlacements&#34;: 2391495,  &#34;solver2methodCalls&#34;: 109575700,  &#34;solver2squareReads&#34;: 31890143,  &#34;solver2explicitTests&#34;: 46172015,  &#34;solver2implicitTests&#34;: 45473931},
-    {&#34;size&#34;: &#34;7&#34;, &#34;solver1queenPlacements&#34;: 102022809,  &#34;solver1methodCalls&#34;: 20677761079,  &#34;solver1squareReads&#34;: 6659907867,  &#34;solver1explicitTests&#34;: 7271931036,  &#34;solver1implicitTests&#34;: 8803458227,  &#34;solver2queenPlacements&#34;: 102022809,  &#34;solver2methodCalls&#34;: 5578385347,  &#34;solver2squareReads&#34;: 1660790226,  &#34;solver2explicitTests&#34;: 2272813395,  &#34;solver2implicitTests&#34;: 2273998451},
-    {&#34;size&#34;: &#34;8&#34;, &#34;solver1queenPlacements&#34;: 5130659560,  &#34;solver1methodCalls&#34;: 1318173704582,  &#34;solver1squareReads&#34;: 427654527254,  &#34;solver1explicitTests&#34;: 458618310305,  &#34;solver1implicitTests&#34;: 547241304569,  &#34;solver2queenPlacements&#34;: 5130659560,  &#34;solver2methodCalls&#34;: 327956409502,  &#34;solver2squareReads&#34;: 99292315414,  &#34;solver2explicitTests&#34;: 130256098465,  &#34;solver2implicitTests&#34;: 131657880209}
+var prefixdata = [
+    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 0.1,  &#34;solver1methodCalls&#34;: 1.3617278360175928,  &#34;solver1squareReads&#34;: 0.6989700043360189,  &#34;solver1explicitTests&#34;: 1.2304489213782739,  &#34;solver1implicitTests&#34;: 1.3222192947339193,  &#34;solver2queenPlacements&#34;: 0.1,  &#34;solver2methodCalls&#34;: 1.2787536009528289,  &#34;solver2squareReads&#34;: 0.6020599913279624,  &#34;solver2explicitTests&#34;: 1.2041199826559248,  &#34;solver2implicitTests&#34;: 1.2304489213782739},
+    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 1.0,  &#34;solver1methodCalls&#34;: 2.510545010206612,  &#34;solver1squareReads&#34;: 1.9344984512435677,  &#34;solver1explicitTests&#34;: 2.2430380486862944,  &#34;solver1implicitTests&#34;: 2.3010299956639813,  &#34;solver2queenPlacements&#34;: 1.0,  &#34;solver2methodCalls&#34;: 2.287801729930226,  &#34;solver2squareReads&#34;: 1.662757831681574,  &#34;solver2explicitTests&#34;: 2.130333768495006,  &#34;solver2implicitTests&#34;: 2.041392685158225},
+    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 2.110589710299249,  &#34;solver1methodCalls&#34;: 3.8275631112547237,  &#34;solver1squareReads&#34;: 3.2911467617318855,  &#34;solver1explicitTests&#34;: 3.4616485680634552,  &#34;solver1implicitTests&#34;: 3.5514499979728753,  &#34;solver2queenPlacements&#34;: 2.110589710299249,  &#34;solver2methodCalls&#34;: 3.4929000111087034,  &#34;solver2squareReads&#34;: 2.8998205024270964,  &#34;solver2explicitTests&#34;: 3.2390490931401916,  &#34;solver2implicitTests&#34;: 3.1749315935284423},
+    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 3.400710636773231,  &#34;solver1methodCalls&#34;: 5.299415766886762,  &#34;solver1squareReads&#34;: 4.783760695743924,  &#34;solver1explicitTests&#34;: 4.884325142831696,  &#34;solver1implicitTests&#34;: 4.9841536143517695,  &#34;solver2queenPlacements&#34;: 3.400710636773231,  &#34;solver2methodCalls&#34;: 4.880664992432927,  &#34;solver2squareReads&#34;: 4.312262005983347,  &#34;solver2explicitTests&#34;: 4.560635818678364,  &#34;solver2implicitTests&#34;: 4.525265139380899},
+    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 4.8350878472324945,  &#34;solver1methodCalls&#34;: 6.8903197834110905,  &#34;solver1squareReads&#34;: 6.386476313871969,  &#34;solver1explicitTests&#34;: 6.4542487819626135,  &#34;solver1implicitTests&#34;: 6.550688461391552,  &#34;solver2queenPlacements&#34;: 4.8350878472324945,  &#34;solver2methodCalls&#34;: 6.409833241014112,  &#34;solver2squareReads&#34;: 5.860187025558374,  &#34;solver2explicitTests&#34;: 6.055365332930141,  &#34;solver2implicitTests&#34;: 6.037897591308276},
+    {&#34;size&#34;: &#34;6&#34;, &#34;solver1queenPlacements&#34;: 6.378669477211044,  &#34;solver1methodCalls&#34;: 8.568493489537232,  &#34;solver1squareReads&#34;: 8.07182297973045,  &#34;solver1explicitTests&#34;: 8.121447677995999,  &#34;solver1implicitTests&#34;: 8.211273254652662,  &#34;solver2queenPlacements&#34;: 6.378669477211044,  &#34;solver2methodCalls&#34;: 8.03971425372861,  &#34;solver2squareReads&#34;: 7.503656466686411,  &#34;solver2explicitTests&#34;: 7.664378828076926,  &#34;solver2implicitTests&#34;: 7.657762498472013},
+    {&#34;size&#34;: &#34;7&#34;, &#34;solver1queenPlacements&#34;: 8.008697276815294,  &#34;solver1methodCalls&#34;: 10.315503512967584,  &#34;solver1squareReads&#34;: 9.823468221192783,  &#34;solver1explicitTests&#34;: 9.861649751563379,  &#34;solver1implicitTests&#34;: 9.944653307817687,  &#34;solver2queenPlacements&#34;: 8.008697276815294,  &#34;solver2methodCalls&#34;: 9.746508511417176,  &#34;solver2squareReads&#34;: 9.220314780287609,  &#34;solver2explicitTests&#34;: 9.356563780270248,  &#34;solver2implicitTests&#34;: 9.356790164519534},
+    {&#34;size&#34;: &#34;8&#34;, &#34;solver1queenPlacements&#34;: 9.710173198417113,  &#34;solver1methodCalls&#34;: 12.119972643923148,  &#34;solver1squareReads&#34;: 11.631093073935638,  &#34;solver1explicitTests&#34;: 11.66145138991786,  &#34;solver1implicitTests&#34;: 11.738178869540649,  &#34;solver2queenPlacements&#34;: 9.710173198417113,  &#34;solver2methodCalls&#34;: 11.515816123068971,  &#34;solver2squareReads&#34;: 10.996915638198928,  &#34;solver2explicitTests&#34;: 11.114798065696673,  &#34;solver2implicitTests&#34;: 11.119446858344201}
     ];
-var prefix1queenPlacementsGraph = Morris.Line({
-    element: &#39;prefix1queenPlacements&#39;,
+//Data
+var prefixlogData = { &#34;0.1&#34;: 1,  &#34;1.2787536009528289&#34;: 19,  &#34;8.121447677995999&#34;: 132265835,  &#34;4.312262005983347&#34;: 20524,  &#34;6.386476313871969&#34;: 2434873,  &#34;9.746508511417176&#34;: 5578385347,  &#34;9.710173198417113&#34;: 5130659560,  &#34;0.6020599913279624&#34;: 4,  &#34;11.114798065696673&#34;: 130256098465,  &#34;6.055365332930141&#34;: 1135966,  &#34;6.378669477211044&#34;: 2391495,  &#34;11.515816123068971&#34;: 327956409502,  &#34;8.568493489537232&#34;: 370248655,  &#34;8.211273254652662&#34;: 162657186,  &#34;4.884325142831696&#34;: 76617,  &#34;7.664378828076926&#34;: 46172015,  &#34;4.525265139380899&#34;: 33517,  &#34;6.550688461391552&#34;: 3553763,  &#34;2.8998205024270964&#34;: 794,  &#34;9.944653307817687&#34;: 8803458227,  &#34;4.783760695743924&#34;: 60780,  &#34;1.3222192947339193&#34;: 21,  &#34;1.2041199826559248&#34;: 16,  &#34;2.287801729930226&#34;: 194,  &#34;12.119972643923148&#34;: 1318173704582,  &#34;1.9344984512435677&#34;: 86,  &#34;4.8350878472324945&#34;: 68405,  &#34;4.560635818678364&#34;: 36361,  &#34;6.037897591308276&#34;: 1091183,  &#34;5.860187025558374&#34;: 724748,  &#34;11.738178869540649&#34;: 547241304569,  &#34;3.400710636773231&#34;: 2516,  &#34;11.66145138991786&#34;: 458618310305,  &#34;3.2911467617318855&#34;: 1955,  &#34;3.4616485680634552&#34;: 2895,  &#34;6.4542487819626135&#34;: 2846091,  &#34;7.503656466686411&#34;: 31890143,  &#34;1.3617278360175928&#34;: 23,  &#34;2.041392685158225&#34;: 110,  &#34;1.662757831681574&#34;: 46,  &#34;5.299415766886762&#34;: 199258,  &#34;1.2304489213782739&#34;: 17,  &#34;2.510545010206612&#34;: 324,  &#34;8.008697276815294&#34;: 102022809,  &#34;9.356790164519534&#34;: 2273998451,  &#34;9.861649751563379&#34;: 7271931036,  &#34;4.880664992432927&#34;: 75974,  &#34;1&#34;: 10,  &#34;3.8275631112547237&#34;: 6723,  &#34;10.996915638198928&#34;: 99292315414,  &#34;2.110589710299249&#34;: 129,  &#34;4.9841536143517695&#34;: 96417,  &#34;6.409833241014112&#34;: 2569409,  &#34;8.03971425372861&#34;: 109575700,  &#34;9.220314780287609&#34;: 1660790226,  &#34;10.315503512967584&#34;: 20677761079,  &#34;11.119446858344201&#34;: 131657880209,  &#34;2.130333768495006&#34;: 135,  &#34;11.631093073935638&#34;: 427654527254,  &#34;9.356563780270248&#34;: 2272813395,  &#34;6.8903197834110905&#34;: 7768189,  &#34;3.1749315935284423&#34;: 1496,  &#34;7.657762498472013&#34;: 45473931,  &#34;9.823468221192783&#34;: 6659907867,  &#34;2.3010299956639813&#34;: 200,  &#34;3.4929000111087034&#34;: 3111,  &#34;0.6989700043360189&#34;: 5,  &#34;8.07182297973045&#34;: 117983963,  &#34;3.5514499979728753&#34;: 3560,  &#34;2.2430380486862944&#34;: 175,  &#34;3.2390490931401916&#34;: 1734   };
+var prefixqueenPlacementsGraph = Morris.Line({
+    element: &#39;prefixqueenPlacements&#39;,
     hideHover: &#39;auto&#39;,
-    data: prefix1data,
+    data: prefixdata,
     xkey: &#39;size&#39;,
     ykeys: [&#39;solver1queenPlacements&#39;, &#39;solver2queenPlacements&#39;],
     labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefixlogData[y] ) { return prefixlogData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
-var prefix1methodCallsGraph = Morris.Line({
-    element: &#39;prefix1methodCalls&#39;,
+var prefixmethodCallsGraph = Morris.Line({
+    element: &#39;prefixmethodCalls&#39;,
     hideHover: &#39;auto&#39;,
-    data: prefix1data,
+    data: prefixdata,
     xkey: &#39;size&#39;,
     ykeys: [&#39;solver1methodCalls&#39;, &#39;solver2methodCalls&#39;],
     labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefixlogData[y] ) { return prefixlogData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
-var prefix1squareReadsGraph = Morris.Line({
-    element: &#39;prefix1squareReads&#39;,
+var prefixsquareReadsGraph = Morris.Line({
+    element: &#39;prefixsquareReads&#39;,
     hideHover: &#39;auto&#39;,
-    data: prefix1data,
+    data: prefixdata,
     xkey: &#39;size&#39;,
     ykeys: [&#39;solver1squareReads&#39;, &#39;solver2squareReads&#39;],
     labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefixlogData[y] ) { return prefixlogData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
-var prefix1explicitTestsGraph = Morris.Line({
-    element: &#39;prefix1explicitTests&#39;,
+var prefixexplicitTestsGraph = Morris.Line({
+    element: &#39;prefixexplicitTests&#39;,
     hideHover: &#39;auto&#39;,
-    data: prefix1data,
+    data: prefixdata,
     xkey: &#39;size&#39;,
     ykeys: [&#39;solver1explicitTests&#39;, &#39;solver2explicitTests&#39;],
     labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefixlogData[y] ) { return prefixlogData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
-var prefix1implicitTestsGraph = Morris.Line({
-    element: &#39;prefix1implicitTests&#39;,
+var prefiximplicitTestsGraph = Morris.Line({
+    element: &#39;prefiximplicitTests&#39;,
     hideHover: &#39;auto&#39;,
-    data: prefix1data,
+    data: prefixdata,
     xkey: &#39;size&#39;,
     ykeys: [&#39;solver1implicitTests&#39;, &#39;solver2implicitTests&#39;],
     labels: [&#39;List brute-force&#39;, &#39;Queen constraint brute-force&#39;],
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefixlogData[y] ) { return prefixlogData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 
@@ -991,7 +993,7 @@ private void solve(final int x, final int y) {
 &lt;div class=&#34;panel panel-default tab-box&#34;&gt;
     &lt;div class=&#34;panel-heading&#34;&gt;
         &lt;h3 class=&#34;panel-title&#34;&gt;
-            &lt;i class=&#34;fa fa-signal&#34;&gt;&lt;/i&gt;Algorithms comparison
+            &lt;i class=&#34;glyphicon glyphicon-stats&#34;&gt;&lt;/i&gt;Algorithms comparison
         &lt;/h3&gt;
         &lt;ul class=&#34;nav nav-tabs&#34;&gt;
             &lt;li&gt;
@@ -1090,14 +1092,17 @@ $(&#39;ul.nav a&#39;).on(&#39;shown.bs.tab&#39;, function (e) {
 
 //Data
 var prefix2data = [
-    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 1,  &#34;solver1methodCalls&#34;: 19,  &#34;solver1squareReads&#34;: 4,  &#34;solver1explicitTests&#34;: 16,  &#34;solver1implicitTests&#34;: 17,  &#34;solver2queenPlacements&#34;: 1,  &#34;solver2methodCalls&#34;: 3,  &#34;solver2squareReads&#34;: 4,  &#34;solver2explicitTests&#34;: 16,  &#34;solver2implicitTests&#34;: 17},
-    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 10,  &#34;solver1methodCalls&#34;: 194,  &#34;solver1squareReads&#34;: 46,  &#34;solver1explicitTests&#34;: 135,  &#34;solver1implicitTests&#34;: 110,  &#34;solver2queenPlacements&#34;: 10,  &#34;solver2methodCalls&#34;: 16,  &#34;solver2squareReads&#34;: 46,  &#34;solver2explicitTests&#34;: 135,  &#34;solver2implicitTests&#34;: 110},
-    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 129,  &#34;solver1methodCalls&#34;: 3111,  &#34;solver1squareReads&#34;: 794,  &#34;solver1explicitTests&#34;: 1734,  &#34;solver1implicitTests&#34;: 1496,  &#34;solver2queenPlacements&#34;: 129,  &#34;solver2methodCalls&#34;: 213,  &#34;solver2squareReads&#34;: 794,  &#34;solver2explicitTests&#34;: 1734,  &#34;solver2implicitTests&#34;: 1496},
-    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 2516,  &#34;solver1methodCalls&#34;: 75974,  &#34;solver1squareReads&#34;: 20524,  &#34;solver1explicitTests&#34;: 36361,  &#34;solver1implicitTests&#34;: 33517,  &#34;solver2queenPlacements&#34;: 2516,  &#34;solver2methodCalls&#34;: 4338,  &#34;solver2squareReads&#34;: 20524,  &#34;solver2explicitTests&#34;: 36361,  &#34;solver2implicitTests&#34;: 33517},
-    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 68405,  &#34;solver1methodCalls&#34;: 2569409,  &#34;solver1squareReads&#34;: 724748,  &#34;solver1explicitTests&#34;: 1135966,  &#34;solver1implicitTests&#34;: 1091183,  &#34;solver2queenPlacements&#34;: 68405,  &#34;solver2methodCalls&#34;: 121545,  &#34;solver2squareReads&#34;: 724748,  &#34;solver2explicitTests&#34;: 1135966,  &#34;solver2implicitTests&#34;: 1091183},
-    {&#34;size&#34;: &#34;6&#34;, &#34;solver1queenPlacements&#34;: 2391495,  &#34;solver1methodCalls&#34;: 109575700,  &#34;solver1squareReads&#34;: 31890143,  &#34;solver1explicitTests&#34;: 46172015,  &#34;solver1implicitTests&#34;: 45473931,  &#34;solver2queenPlacements&#34;: 2391495,  &#34;solver2methodCalls&#34;: 4339291,  &#34;solver2squareReads&#34;: 31890143,  &#34;solver2explicitTests&#34;: 46172015,  &#34;solver2implicitTests&#34;: 45473931},
-    {&#34;size&#34;: &#34;7&#34;, &#34;solver1queenPlacements&#34;: 102022809,  &#34;solver1methodCalls&#34;: 5578385347,  &#34;solver1squareReads&#34;: 1660790226,  &#34;solver1explicitTests&#34;: 2272813395,  &#34;solver1implicitTests&#34;: 2273998451,  &#34;solver2queenPlacements&#34;: 102022809,  &#34;solver2methodCalls&#34;: 187923433,  &#34;solver2squareReads&#34;: 1660790226,  &#34;solver2explicitTests&#34;: 2272813395,  &#34;solver2implicitTests&#34;: 2273998451}
+    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 0.1,  &#34;solver1methodCalls&#34;: 1.2787536009528289,  &#34;solver1squareReads&#34;: 0.6020599913279624,  &#34;solver1explicitTests&#34;: 1.2041199826559248,  &#34;solver1implicitTests&#34;: 1.2304489213782739,  &#34;solver2queenPlacements&#34;: 0.1,  &#34;solver2methodCalls&#34;: 0.47712125471966244,  &#34;solver2squareReads&#34;: 0.6020599913279624,  &#34;solver2explicitTests&#34;: 1.2041199826559248,  &#34;solver2implicitTests&#34;: 1.2304489213782739},
+    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 1.0,  &#34;solver1methodCalls&#34;: 2.287801729930226,  &#34;solver1squareReads&#34;: 1.662757831681574,  &#34;solver1explicitTests&#34;: 2.130333768495006,  &#34;solver1implicitTests&#34;: 2.041392685158225,  &#34;solver2queenPlacements&#34;: 1.0,  &#34;solver2methodCalls&#34;: 1.2041199826559248,  &#34;solver2squareReads&#34;: 1.662757831681574,  &#34;solver2explicitTests&#34;: 2.130333768495006,  &#34;solver2implicitTests&#34;: 2.041392685158225},
+    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 2.110589710299249,  &#34;solver1methodCalls&#34;: 3.4929000111087034,  &#34;solver1squareReads&#34;: 2.8998205024270964,  &#34;solver1explicitTests&#34;: 3.2390490931401916,  &#34;solver1implicitTests&#34;: 3.1749315935284423,  &#34;solver2queenPlacements&#34;: 2.110589710299249,  &#34;solver2methodCalls&#34;: 2.3283796034387376,  &#34;solver2squareReads&#34;: 2.8998205024270964,  &#34;solver2explicitTests&#34;: 3.2390490931401916,  &#34;solver2implicitTests&#34;: 3.1749315935284423},
+    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 3.400710636773231,  &#34;solver1methodCalls&#34;: 4.880664992432927,  &#34;solver1squareReads&#34;: 4.312262005983347,  &#34;solver1explicitTests&#34;: 4.560635818678364,  &#34;solver1implicitTests&#34;: 4.525265139380899,  &#34;solver2queenPlacements&#34;: 3.400710636773231,  &#34;solver2methodCalls&#34;: 3.6372895476781744,  &#34;solver2squareReads&#34;: 4.312262005983347,  &#34;solver2explicitTests&#34;: 4.560635818678364,  &#34;solver2implicitTests&#34;: 4.525265139380899},
+    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 4.8350878472324945,  &#34;solver1methodCalls&#34;: 6.409833241014112,  &#34;solver1squareReads&#34;: 5.860187025558374,  &#34;solver1explicitTests&#34;: 6.055365332930141,  &#34;solver1implicitTests&#34;: 6.037897591308276,  &#34;solver2queenPlacements&#34;: 4.8350878472324945,  &#34;solver2methodCalls&#34;: 5.084737097962795,  &#34;solver2squareReads&#34;: 5.860187025558374,  &#34;solver2explicitTests&#34;: 6.055365332930141,  &#34;solver2implicitTests&#34;: 6.037897591308276},
+    {&#34;size&#34;: &#34;6&#34;, &#34;solver1queenPlacements&#34;: 6.378669477211044,  &#34;solver1methodCalls&#34;: 8.03971425372861,  &#34;solver1squareReads&#34;: 7.503656466686411,  &#34;solver1explicitTests&#34;: 7.664378828076926,  &#34;solver1implicitTests&#34;: 7.657762498472013,  &#34;solver2queenPlacements&#34;: 6.378669477211044,  &#34;solver2methodCalls&#34;: 6.6374187756089364,  &#34;solver2squareReads&#34;: 7.503656466686411,  &#34;solver2explicitTests&#34;: 7.664378828076926,  &#34;solver2implicitTests&#34;: 7.657762498472013},
+    {&#34;size&#34;: &#34;7&#34;, &#34;solver1queenPlacements&#34;: 8.008697276815294,  &#34;solver1methodCalls&#34;: 9.746508511417176,  &#34;solver1squareReads&#34;: 9.220314780287609,  &#34;solver1explicitTests&#34;: 9.356563780270248,  &#34;solver1implicitTests&#34;: 9.356790164519534,  &#34;solver2queenPlacements&#34;: 8.008697276815294,  &#34;solver2methodCalls&#34;: 8.273980937567645,  &#34;solver2squareReads&#34;: 9.220314780287609,  &#34;solver2explicitTests&#34;: 9.356563780270248,  &#34;solver2implicitTests&#34;: 9.356790164519534},
+    {&#34;size&#34;: &#34;8&#34;, &#34;solver1queenPlacements&#34;: 9.710173198417113,  &#34;solver1methodCalls&#34;: 11.515816123068971,  &#34;solver1squareReads&#34;: 10.996915638198928,  &#34;solver1explicitTests&#34;: 11.114798065696673,  &#34;solver1implicitTests&#34;: 11.119446858344201,  &#34;solver2queenPlacements&#34;: 9.710173198417113,  &#34;solver2methodCalls&#34;: 9.980313634397985,  &#34;solver2squareReads&#34;: 10.996915638198928,  &#34;solver2explicitTests&#34;: 11.114798065696673,  &#34;solver2implicitTests&#34;: 11.119446858344201}
     ];
+//Data
+var prefix2logData = { &#34;8.008697276815294&#34;: 102022809,  &#34;1.2787536009528289&#34;: 19,  &#34;0.1&#34;: 1,  &#34;9.356790164519534&#34;: 2273998451,  &#34;4.880664992432927&#34;: 75974,  &#34;4.312262005983347&#34;: 20524,  &#34;9.746508511417176&#34;: 5578385347,  &#34;1&#34;: 10,  &#34;9.710173198417113&#34;: 5130659560,  &#34;0.6020599913279624&#34;: 4,  &#34;11.114798065696673&#34;: 130256098465,  &#34;10.996915638198928&#34;: 99292315414,  &#34;6.378669477211044&#34;: 2391495,  &#34;6.055365332930141&#34;: 1135966,  &#34;2.110589710299249&#34;: 129,  &#34;11.515816123068971&#34;: 327956409502,  &#34;6.409833241014112&#34;: 2569409,  &#34;8.03971425372861&#34;: 109575700,  &#34;9.220314780287609&#34;: 1660790226,  &#34;7.664378828076926&#34;: 46172015,  &#34;4.525265139380899&#34;: 33517,  &#34;11.119446858344201&#34;: 131657880209,  &#34;2.130333768495006&#34;: 135,  &#34;2.8998205024270964&#34;: 794,  &#34;1.2041199826559248&#34;: 16,  &#34;5.084737097962795&#34;: 121545,  &#34;8.273980937567645&#34;: 187923433,  &#34;6.6374187756089364&#34;: 4339291,  &#34;9.980313634397985&#34;: 9556825020,  &#34;2.287801729930226&#34;: 194,  &#34;9.356563780270248&#34;: 2272813395,  &#34;3.1749315935284423&#34;: 1496,  &#34;4.8350878472324945&#34;: 68405,  &#34;4.560635818678364&#34;: 36361,  &#34;6.037897591308276&#34;: 1091183,  &#34;5.860187025558374&#34;: 724748,  &#34;7.657762498472013&#34;: 45473931,  &#34;3.400710636773231&#34;: 2516,  &#34;2.3283796034387376&#34;: 213,  &#34;3.4929000111087034&#34;: 3111,  &#34;3.6372895476781744&#34;: 4338,  &#34;7.503656466686411&#34;: 31890143,  &#34;2.041392685158225&#34;: 110,  &#34;1.662757831681574&#34;: 46,  &#34;0.47712125471966244&#34;: 3,  &#34;1.2304489213782739&#34;: 17,  &#34;3.2390490931401916&#34;: 1734    };
 var prefix2queenPlacementsGraph = Morris.Line({
     element: &#39;prefix2queenPlacements&#39;,
     hideHover: &#39;auto&#39;,
@@ -1108,7 +1113,7 @@ var prefix2queenPlacementsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefix2logData[y] ) { return prefix2logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var prefix2methodCallsGraph = Morris.Line({
@@ -1121,7 +1126,7 @@ var prefix2methodCallsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefix2logData[y] ) { return prefix2logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var prefix2squareReadsGraph = Morris.Line({
@@ -1134,7 +1139,7 @@ var prefix2squareReadsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefix2logData[y] ) { return prefix2logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var prefix2explicitTestsGraph = Morris.Line({
@@ -1147,7 +1152,7 @@ var prefix2explicitTestsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefix2logData[y] ) { return prefix2logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var prefix2implicitTestsGraph = Morris.Line({
@@ -1160,7 +1165,7 @@ var prefix2implicitTestsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( prefix2logData[y] ) { return prefix2logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 
@@ -1480,7 +1485,7 @@ private void solve(final int x, final int y) {
 &lt;div class=&#34;panel panel-default tab-box&#34;&gt;
     &lt;div class=&#34;panel-heading&#34;&gt;
         &lt;h3 class=&#34;panel-title&#34;&gt;
-            &lt;i class=&#34;fa fa-signal&#34;&gt;&lt;/i&gt;Algorithms comparison
+            &lt;i class=&#34;glyphicon glyphicon-stats&#34;&gt;&lt;/i&gt;Algorithms comparison
         &lt;/h3&gt;
         &lt;ul class=&#34;nav nav-tabs&#34;&gt;
             &lt;li class=&#34;active&#34;&gt;
@@ -1579,12 +1584,14 @@ $(&#39;ul.nav a&#39;).on(&#39;shown.bs.tab&#39;, function (e) {
 
 //Data
 var data = [
-    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 1,  &#34;solver1methodCalls&#34;: 22,  &#34;solver1squareReads&#34;: 5,  &#34;solver1explicitTests&#34;: 16,  &#34;solver1implicitTests&#34;: 20,  &#34;solver2queenPlacements&#34;: 1,  &#34;solver2methodCalls&#34;: 23,  &#34;solver2squareReads&#34;: 5,  &#34;solver2explicitTests&#34;: 17,  &#34;solver2implicitTests&#34;: 21},
-    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 15,  &#34;solver1methodCalls&#34;: 408,  &#34;solver1squareReads&#34;: 106,  &#34;solver1explicitTests&#34;: 225,  &#34;solver1implicitTests&#34;: 236,  &#34;solver2queenPlacements&#34;: 10,  &#34;solver2methodCalls&#34;: 324,  &#34;solver2squareReads&#34;: 86,  &#34;solver2explicitTests&#34;: 175,  &#34;solver2implicitTests&#34;: 200},
-    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 511,  &#34;solver1methodCalls&#34;: 19245,  &#34;solver1squareReads&#34;: 5393,  &#34;solver1explicitTests&#34;: 8277,  &#34;solver1implicitTests&#34;: 9534,  &#34;solver2queenPlacements&#34;: 129,  &#34;solver2methodCalls&#34;: 6723,  &#34;solver2squareReads&#34;: 1955,  &#34;solver2explicitTests&#34;: 2895,  &#34;solver2implicitTests&#34;: 3560},
-    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 65531,  &#34;solver1methodCalls&#34;: 3600248,  &#34;solver1squareReads&#34;: 1069020,  &#34;solver1explicitTests&#34;: 1402825,  &#34;solver1implicitTests&#34;: 1668602,  &#34;solver2queenPlacements&#34;: 2516,  &#34;solver2methodCalls&#34;: 199258,  &#34;solver2squareReads&#34;: 60780,  &#34;solver2explicitTests&#34;: 76617,  &#34;solver2implicitTests&#34;: 96417},
-    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 33554379,  &#34;solver1methodCalls&#34;: 2720078953,  &#34;solver1squareReads&#34;: 839584223,  &#34;solver1explicitTests&#34;: 1008454787,  &#34;solver1implicitTests&#34;: 1208950192,  &#34;solver2queenPlacements&#34;: 68405,  &#34;solver2methodCalls&#34;: 7768189,  &#34;solver2squareReads&#34;: 2434873,  &#34;solver2explicitTests&#34;: 2846091,  &#34;solver2implicitTests&#34;: 3553763}
+    {&#34;size&#34;: &#34;1&#34;, &#34;solver1queenPlacements&#34;: 0.1,  &#34;solver1methodCalls&#34;: 1.3424226808222062,  &#34;solver1squareReads&#34;: 0.6989700043360189,  &#34;solver1explicitTests&#34;: 1.2041199826559248,  &#34;solver1implicitTests&#34;: 1.3010299956639813,  &#34;solver2queenPlacements&#34;: 0.1,  &#34;solver2methodCalls&#34;: 1.3617278360175928,  &#34;solver2squareReads&#34;: 0.6989700043360189,  &#34;solver2explicitTests&#34;: 1.2304489213782739,  &#34;solver2implicitTests&#34;: 1.3222192947339193},
+    {&#34;size&#34;: &#34;2&#34;, &#34;solver1queenPlacements&#34;: 1.1760912590556813,  &#34;solver1methodCalls&#34;: 2.61066016308988,  &#34;solver1squareReads&#34;: 2.0253058652647704,  &#34;solver1explicitTests&#34;: 2.3521825181113627,  &#34;solver1implicitTests&#34;: 2.3729120029701067,  &#34;solver2queenPlacements&#34;: 1.0,  &#34;solver2methodCalls&#34;: 2.510545010206612,  &#34;solver2squareReads&#34;: 1.9344984512435677,  &#34;solver2explicitTests&#34;: 2.2430380486862944,  &#34;solver2implicitTests&#34;: 2.3010299956639813},
+    {&#34;size&#34;: &#34;3&#34;, &#34;solver1queenPlacements&#34;: 2.708420900134713,  &#34;solver1methodCalls&#34;: 4.28431791543061,  &#34;solver1squareReads&#34;: 3.7318304202881625,  &#34;solver1explicitTests&#34;: 3.917872955198848,  &#34;solver1implicitTests&#34;: 3.9792751475910233,  &#34;solver2queenPlacements&#34;: 2.110589710299249,  &#34;solver2methodCalls&#34;: 3.8275631112547237,  &#34;solver2squareReads&#34;: 3.2911467617318855,  &#34;solver2explicitTests&#34;: 3.4616485680634552,  &#34;solver2implicitTests&#34;: 3.5514499979728753},
+    {&#34;size&#34;: &#34;4&#34;, &#34;solver1queenPlacements&#34;: 4.8164467953202195,  &#34;solver1methodCalls&#34;: 6.556332417801133,  &#34;solver1squareReads&#34;: 6.028985830380328,  &#34;solver1explicitTests&#34;: 6.147003496919546,  &#34;solver1implicitTests&#34;: 6.222352759797032,  &#34;solver2queenPlacements&#34;: 3.400710636773231,  &#34;solver2methodCalls&#34;: 5.299415766886762,  &#34;solver2squareReads&#34;: 4.783760695743924,  &#34;solver2explicitTests&#34;: 4.884325142831696,  &#34;solver2implicitTests&#34;: 4.9841536143517695},
+    {&#34;size&#34;: &#34;5&#34;, &#34;solver1queenPlacements&#34;: 7.525749205620827,  &#34;solver1methodCalls&#34;: 9.434581510046916,  &#34;solver1squareReads&#34;: 8.924064268966557,  &#34;solver1explicitTests&#34;: 9.00365643185312,  &#34;solver1implicitTests&#34;: 9.082408408565364,  &#34;solver2queenPlacements&#34;: 4.8350878472324945,  &#34;solver2methodCalls&#34;: 6.8903197834110905,  &#34;solver2squareReads&#34;: 6.386476313871969,  &#34;solver2explicitTests&#34;: 6.4542487819626135,  &#34;solver2implicitTests&#34;: 6.550688461391552}
     ];
+//Data
+var logData = { &#34;9.00365643185312&#34;: 1008454787,  &#34;0.1&#34;: 1,  &#34;9.082408408565364&#34;: 1208950192,  &#34;6.386476313871969&#34;: 2434873,  &#34;1.3424226808222062&#34;: 22,  &#34;1&#34;: 10,  &#34;2.0253058652647704&#34;: 106,  &#34;2.3729120029701067&#34;: 236,  &#34;1.1760912590556813&#34;: 15,  &#34;3.8275631112547237&#34;: 6723,  &#34;2.3521825181113627&#34;: 225,  &#34;2.110589710299249&#34;: 129,  &#34;4.9841536143517695&#34;: 96417,  &#34;4.884325142831696&#34;: 76617,  &#34;6.147003496919546&#34;: 1402825,  &#34;3.917872955198848&#34;: 8277,  &#34;8.924064268966557&#34;: 839584223,  &#34;6.556332417801133&#34;: 3600248,  &#34;3.9792751475910233&#34;: 9534,  &#34;6.550688461391552&#34;: 3553763,  &#34;7.525749205620827&#34;: 33554379,  &#34;4.783760695743924&#34;: 60780,  &#34;1.3222192947339193&#34;: 21,  &#34;1.2041199826559248&#34;: 16,  &#34;3.7318304202881625&#34;: 5393,  &#34;6.028985830380328&#34;: 1069020,  &#34;6.8903197834110905&#34;: 7768189,  &#34;1.9344984512435677&#34;: 86,  &#34;2.708420900134713&#34;: 511,  &#34;4.8350878472324945&#34;: 68405,  &#34;4.28431791543061&#34;: 19245,  &#34;9.434581510046916&#34;: 2720078953,  &#34;6.222352759797032&#34;: 1668602,  &#34;1.3010299956639813&#34;: 20,  &#34;3.400710636773231&#34;: 2516,  &#34;2.61066016308988&#34;: 408,  &#34;4.8164467953202195&#34;: 65531,  &#34;3.2911467617318855&#34;: 1955,  &#34;2.3010299956639813&#34;: 200,  &#34;6.4542487819626135&#34;: 2846091,  &#34;3.4616485680634552&#34;: 2895,  &#34;0.6989700043360189&#34;: 5,  &#34;1.3617278360175928&#34;: 23,  &#34;5.299415766886762&#34;: 199258,  &#34;3.5514499979728753&#34;: 3560,  &#34;1.2304489213782739&#34;: 17,  &#34;2.510545010206612&#34;: 324,  &#34;2.2430380486862944&#34;: 175 };
 var queenPlacementsGraph = Morris.Line({
     element: &#39;queenPlacements&#39;,
     hideHover: &#39;auto&#39;,
@@ -1595,7 +1602,7 @@ var queenPlacementsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( logData[y] ) { return logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var methodCallsGraph = Morris.Line({
@@ -1608,7 +1615,7 @@ var methodCallsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( logData[y] ) { return logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var squareReadsGraph = Morris.Line({
@@ -1621,7 +1628,7 @@ var squareReadsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( logData[y] ) { return logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var explicitTestsGraph = Morris.Line({
@@ -1634,7 +1641,7 @@ var explicitTestsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( logData[y] ) { return logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 var implicitTestsGraph = Morris.Line({
@@ -1647,7 +1654,7 @@ var implicitTestsGraph = Morris.Line({
     resize: true,
     parseTime: false,
     lineColors: [&#39;#A52A2A&#39;, &#39;#72A0C1&#39;],
-    yLabelFormat: function(y) { return y.toLocaleString(); },
+    yLabelFormat: function(y) { if( logData[y] ) { return logData[y].toLocaleString(); } else { if( 0 == y ) { return 0; } return &#34;10^&#34; + y;} },
     xLabelFormat: function(obj) { return (obj.x + 1).toLocaleString(); },
 });
 
